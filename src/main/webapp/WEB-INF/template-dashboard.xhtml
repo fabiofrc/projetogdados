@@ -12,7 +12,7 @@
 
 
     <ui:define name="conteudo">
-       
+
         <b:row>
             <b:column col-md="2">
                 <h3 style="color: gray;">Menu</h3>
@@ -41,7 +41,7 @@
                         <br></br>
                         <b:commandLink ajax="false" action="#{comentarioController.timeline()}" value="Timeline em detalhes »" />
                         <br></br>
-                        
+
                         <b:commandLink ajax="false" action="#{comentarioController.exportarComentario()}" value="exportar comentarios »" />
                         <br></br>
 
@@ -58,6 +58,9 @@
                         <b:commandLink ajax="false" action="#{participanteController.novo()}" value="Novo participante »" />
                         <br></br>
                         <b:commandLink ajax="false" action="#{noticiaController.novo()}" value="Nova postagem »" />
+
+                        <p:separator/>
+                        <b:commandLink ajax="false" action="#{comentarioController.grafico()}" value="Comentários charts »" />
                     </b:panel>
                 </h:form>
             </b:column>

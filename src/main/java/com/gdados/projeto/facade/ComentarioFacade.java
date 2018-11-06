@@ -4,6 +4,7 @@ import com.gdados.projeto.dao.DaoGeneric;
 import com.gdados.projeto.dao.JpaUtil;
 import com.gdados.projeto.model.Comentario;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -26,7 +27,7 @@ public class ComentarioFacade extends DaoGeneric<Comentario> implements Serializ
         }
         return null;
     }
-    
+
     public List<Comentario> listaComentarioByParticipante(Long id) {
         try {
             Query q = em.createQuery("SELECT c FROM Comentario c JOIN c.participante n WHERE n.id = :id");
@@ -44,6 +45,14 @@ public class ComentarioFacade extends DaoGeneric<Comentario> implements Serializ
         Long contador = (Long) q.getSingleResult();
         return contador;
     }
+
+    public Long contaComentarioByData(Date dataRegistro) {
+        Query q = em.createQuery("select count(c) FROM Comentario c WHERE c.dataRegistro = :dataRegistro");
+        q.setParameter("dataRegistro", dataRegistro);
+        Long contador = (Long) q.getSingleResult();
+        return contador;
+    }
+
     public Long contaTotal() {
         Query q = em.createQuery("select count(c) FROM Comentario c");
         Long contador = (Long) q.getSingleResult();

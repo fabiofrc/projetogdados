@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template-grafico.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="conteudo-grafico-menu">
+
+        <h:form>
+            <center><h3 style="font-weight: bold;">Notícias</h3></center>
+            <p:dataScroller value="#{noticiaController.noticiasDsiponivel}" var="n" chunkSize="5">
+                <p:commandLink action="#{comentarioController.createPieModel(n)}" ajax="false">
+                    <p><i class="fa fa-comments-o" /> - <h:outputText value="#{n.titulo}"/></p>
+                </p:commandLink>
+
+                <f:facet name="loader">
+                    <b:commandButton value="ver mais" style="width: 100%;font-weight: bold;"/>
+                </f:facet>
+            </p:dataScroller>
+        </h:form>
+
+    </ui:define>
+
+    <ui:define name="conteudo-grafico-conteudo">
+        <center><h3 style="font-weight: bold;">DASHBOARD</h3></center>
+      
+        <h:form>
+            <p:chart type="bar" model="#{comentarioGraficoController.combinedModel}" style="height:300px" responsive="true"/>
+        </h:form>
+
+        <h:form>
+            <b:growl id="growl" showDetail="true" />
+            <p:chart type="pie" model="#{comentarioController.pieModeloComentario}" style="width: 100%" >
+                <p:ajax event="itemSelect" listener="#{comentarioController.itemSelect}" update="growl" />
+            </p:chart>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

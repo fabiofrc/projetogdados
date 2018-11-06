@@ -14,18 +14,10 @@
             <b:container>
                 <b:row>
                     <b:column col-md="3">
-                        <h:form>
-                            <center><h3 style="font-weight: bold;">Notícias</h3></center>
-                            <p:dataList value="#{noticiaController.noticiasDsiponivel}" var="n">
-                                <p:commandLink action="#{comentarioController.createPieModel(n)}" ajax="false">
-                                    <h:outputText value="#{n.titulo}"/>
-                                </p:commandLink>
-                            </p:dataList>
-                        </h:form>
+                        <ui:insert name="conteudo-grafico-menu"/>
                     </b:column>
 
                     <b:column col-md="9">
-                        <center><h3 style="font-weight: bold;">Gráfico de comentário por notícias</h3></center>
                         <ui:insert name="conteudo-grafico-conteudo"/>
                     </b:column>
                 </b:row>

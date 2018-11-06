@@ -11,11 +11,7 @@
 
         <h:form>
             <center><h3 style="font-weight: bold;">Notícias</h3></center>
-            <p:dataList value="#{noticiaController.noticiasDsiponivel}" var="n">
-                <p:commandLink action="#{comentarioController.createPieModel(n)}" ajax="false">
-                    <h:outputText value="#{n.titulo}"/>
-                </p:commandLink>
-            </p:dataList>
+            <p:commandButton value="gerar" action="#{comentarioGraficoController.teste()}" ajax="false"/>
         </h:form>
 
     </ui:define>
@@ -24,10 +20,7 @@
 
         <h:form>
             <center><h3 style="font-weight: bold;">Gráfico de comentário por notícias</h3></center>
-            <p:chart type="pie" model="#{comentarioController.pieModeloComentario}" style="width: 100%" />
-
-            <center><h3 style="font-weight: bold;">Gráfico de comentário por datas</h3></center>
-            <p:chart type="line" model="#{comentarioController.dateModeloComentario}" style="height:400px;"/>
+            <p:chart type="bar" model="#{comentarioGraficoController.combinedModel}" style="height:300px" responsive="true"/>
         </h:form>
 
     </ui:define>

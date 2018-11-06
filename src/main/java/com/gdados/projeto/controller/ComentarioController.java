@@ -17,14 +17,21 @@ import com.gdados.projeto.security.UsuarioSistema;
 import com.gdados.projeto.util.Relatorio.ContadorComentariosByNoticia;
 import com.gdados.projeto.util.msg.Msg;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.event.ItemSelectEvent;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.DateAxis;
+import org.primefaces.model.chart.LineChartModel;
+import org.primefaces.model.chart.LineChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
@@ -35,7 +42,7 @@ public class ComentarioController implements Serializable {
     private Comentario comentario;
     @Inject
     private ComentarioFacade comentarioFacade;
-
+    
     private List<Comentario> comentarios;
     private List<Comentario> comentarioByNoticia;
 
@@ -44,6 +51,7 @@ public class ComentarioController implements Serializable {
     private Long contadorComentarioByNoticia;
 
     private PieChartModel pieModeloComentario;
+    private LineChartModel dateModeloComentario;
 
 //    public ComentarioController() {
 //        if (comentario == null) {
@@ -181,6 +189,7 @@ public class ComentarioController implements Serializable {
 
     private void createPieModels() {
         createPieModel(getNoticia());
+        createDateModel();
     }
 
     public void createPieModel(Noticia noticia) {
@@ -224,8 +233,51 @@ public class ComentarioController implements Serializable {
         }
     }
 
+    private void createDateModel() {
+        dateModeloComentario = new LineChartModel();
+        LineChartSeries series1 = new LineChartSeries();
+        series1.setLabel("Series 1");
+
+        comentarios = new ArrayList<>();
+        for (Comentario c : comentarios) {
+             dateModeloComentario = new LineChartModel();
+//            series1.set(c.getDataRegistro(), c.getId());
+            series1.set("2014-01-01", 51);
+//            dateModeloComentario.addSeries(series1);
+        }
+//        series1.set("2014-01-01", 51);
+//        series1.set("2014-01-06", 22);
+//        series1.set("2014-08-12", 65);
+//        series1.set("2015-01-18", 74);
+//        series1.set("2015-01-24", 60);
+//        series1.set("2014-01-30", 51);
+
+        dateModeloComentario.addSeries(series1);
+
+        dateModeloComentario.setTitle("Zoom for Details");
+        dateModeloComentario.setZoom(true);
+        dateModeloComentario.getAxis(AxisType.Y).setLabel("Values");
+        DateAxis axis = new DateAxis("Dates");
+        axis.setTickAngle(-50);
+        axis.setMax("2015-02-01");
+        axis.setTickFormat("%b %#d, %y");
+
+        dateModeloComentario.getAxes().put(AxisType.X, axis);
+    }
+
     public PieChartModel getPieModeloComentario() {
         return pieModeloComentario;
+    }
+
+    public LineChartModel getDateModeloComentario() {
+        return dateModeloComentario;
+    }
+
+    public void itemSelect(ItemSelectEvent event) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item seleciondo",
+                "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public String lista() {
@@ -247,6 +299,10 @@ public class ComentarioController implements Serializable {
 
     public String exportarComentario() {
         return "/paginas/adm/comentario/exportar_comentario?faces-redirect=true";
+    }
+
+    public String grafico() {
+        return "/paginas/adm/comentario/grafico?faces-redirect=true";
     }
 
     private void limpaCampo() {
