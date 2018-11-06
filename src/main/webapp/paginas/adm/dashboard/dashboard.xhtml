@@ -74,8 +74,45 @@
             </b:row>
         </h:form>
 
+        <br></br>
 
         <h:form>
+            <p:chart type="bar" model="#{comentarioGraficoController.combinedModel}" style="height:300px" responsive="true"/>
+        </h:form>
+
+        <br></br>
+
+        <h:form>
+            <b:row>
+                <b:column col-md="12">
+                    <p:dataGrid var="n" value="#{noticiaController.noticias}" columns="4" layout="grid"
+                                rows="8" paginator="true" id="cars"
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="6,12,16">
+
+                        <f:facet name="header">
+                            Notícias
+                        </f:facet>
+
+                        <p:panel header="#{n.id}" style="text-align:center;height: 250px;">
+                            <h:panelGrid columns="1" style="width:100%">
+
+                                <p:graphicImage value="#{noticiaController.image1}" class="foto-perfil">
+                                    <f:param name="id" value="#{n.id}"/>
+                                </p:graphicImage>
+
+                                <h:outputText value="#{n.titulo}" />
+
+                                <p:commandButton ajax="false" action="#{noticiaController.view(n.id)}" icon="ui-icon-search"/>
+                            </h:panelGrid>
+                        </p:panel>
+
+                    </p:dataGrid>
+                </b:column>
+            </b:row>
+
+            <br></br>
+
             <b:row>
                 <b:column col-md="6">
                     <b:panel>
@@ -97,9 +134,9 @@
                             <b:dataTableColumn value="#{u.email}" />
                         </b:dataTable>
                     </b:panel>
+                </b:column>
 
-                    <br></br>
-
+                <b:column col-md="6">
                     <b:panel>
                         <f:facet name="heading">
                             <i class="fa fa-users" style="padding-right:20px" />
@@ -127,33 +164,6 @@
                         </b:dataTable>
                     </b:panel>
                 </b:column> 
-
-
-                <b:column col-md="6">
-                    <p:dataGrid var="n" value="#{noticiaController.noticias}" columns="3" layout="grid"
-                                rows="9" paginator="true" id="cars"
-                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                rowsPerPageTemplate="6,12,16">
-
-                        <f:facet name="header">
-                            Notícias
-                        </f:facet>
-
-                        <p:panel header="#{n.id}" style="text-align:center;height: 250px;">
-                            <h:panelGrid columns="1" style="width:100%">
-
-                                <p:graphicImage value="#{noticiaController.image1}" class="foto-perfil">
-                                    <f:param name="id" value="#{n.id}"/>
-                                </p:graphicImage>
-
-                                <h:outputText value="#{n.titulo}" />
-
-                                <p:commandButton ajax="false" action="#{noticiaController.view(n.id)}" icon="ui-icon-search"/>
-                            </h:panelGrid>
-                        </p:panel>
-
-                    </p:dataGrid>
-                </b:column>
             </b:row>
         </h:form>
 

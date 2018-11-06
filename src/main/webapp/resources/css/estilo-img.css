@@ -160,8 +160,9 @@
         filter: alpha(opacity=90); /* For IE8 and earlier */
     }
     .noticia-destaque > h2{
-        margin-top: -20%;
+        margin-top: -22%;
         font-weight: bold;
+        padding: 2%;
     }
     .input-pequisa[type=text] {
         width: 200px;

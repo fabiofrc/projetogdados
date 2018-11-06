@@ -11,6 +11,25 @@
 
 
     <ui:define name="conteudo-noticia-esq">
+
+        <h:form>
+            <ui:repeat value="#{noticiaController.noticiasDestaque}" var="n" size="2">
+                <h:link outcome="detalhes">
+                    <div class="noticia-destaque">
+                        <p:graphicImage value="#{noticiaController.image1}" class="image-destque" alt="#{n.titulo}">
+                            <f:param name="id" value="#{n.id}"/>
+                        </p:graphicImage>
+
+                        <h2><b>#{n.titulo}</b></h2>
+                    </div>
+                    <f:param name="id" value="#{n.id}" />
+                </h:link>
+            </ui:repeat>
+        </h:form>
+
+        <br></br>
+        <br></br>
+
         <h:form>
             <p:dataScroller id="dtNoticias2" value="#{noticiaController.noticiasDsiponivel}" var="n" chunkSize="3" >
                 <h:link outcome="detalhes">

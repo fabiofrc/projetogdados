@@ -34,7 +34,7 @@
             </b:container>
         </b:jumbotron>
 
-        <b:jumbotron style="background: white;padding-top: 1%;padding-bottom: 1%;">
+        <b:jumbotron style="background: white;padding-top: 0%;padding-bottom: 0%;">
             <b:container>
                 <b:row>
                     <b:column col-md="10" >
@@ -47,27 +47,7 @@
             </b:container>
         </b:jumbotron>
 
-        <b:jumbotron style="background: white;padding-top: 1%;padding-bottom: 1%;">
-            <b:container>
-                <h:form>
-                    <p:repeat id="dtNoticias2" value="#{noticiaController.noticiasDestaque}" var="n" size="2">
-                        <h:link outcome="detalhes">
-                            <div class="noticia-destaque">
-                                <p:graphicImage value="#{noticiaController.image1}" class="image-destque" alt="#{n.titulo}">
-                                    <f:param name="id" value="#{n.id}"/>
-                                </p:graphicImage>
-
-                                <h2><b>#{n.titulo}</b></h2>
-                            </div>
-                            <f:param name="id" value="#{n.id}" />
-                        </h:link>
-                    </p:repeat>
-                </h:form>
-            </b:container>
-        </b:jumbotron>
-
-
-
+      
         <b:jumbotron style="background: white;">
             <b:container>
                 <b:row>

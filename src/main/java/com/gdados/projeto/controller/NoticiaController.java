@@ -13,6 +13,7 @@ import java.io.ByteArrayInputStream;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -63,6 +64,9 @@ public class NoticiaController implements Serializable {
         if (noticia == null) {
             limpaCampo();
         }
+        noticiasDestaque = new ArrayList<>();
+        getNoticiasDestaque();
+
     }
 
     public String salvar() {
@@ -70,10 +74,12 @@ public class NoticiaController implements Serializable {
             if (noticia.getId() == null) {
                 noticiaFacade.save(noticia);
                 limpaCampo();
+                getNoticiasDestaque();
                 return "lista?faces-redirect=true";
             } else {
                 noticiaFacade.update(noticia);
                 limpaCampo();
+                getNoticiasDestaque();
                 return "lista?faces-redirect=true";
             }
         } catch (Exception e) {
@@ -207,6 +213,7 @@ public class NoticiaController implements Serializable {
 
     public String visualisarNoticias() {
         try {
+            getNoticiasDestaque();
             noticiasDsiponivel = noticiaFacade.getAllDisponivel();
             return "/paginas/plb/noticia/noticia?faces-redirect=true";
         } catch (Exception e) {

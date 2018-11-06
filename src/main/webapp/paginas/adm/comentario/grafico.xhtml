@@ -31,10 +31,12 @@
         <h:form>
             <p:chart type="bar" model="#{comentarioGraficoController.combinedModel}" style="height:300px" responsive="true"/>
         </h:form>
+        
+        <br></br>
 
         <h:form>
             <b:growl id="growl" showDetail="true" />
-            <p:chart type="pie" model="#{comentarioController.pieModeloComentario}" style="width: 100%" >
+            <p:chart type="pie" model="#{comentarioController.pieModeloComentario}" style="width: 100%" rendered="true">
                 <p:ajax event="itemSelect" listener="#{comentarioController.itemSelect}" update="growl" />
             </p:chart>
         </h:form>
