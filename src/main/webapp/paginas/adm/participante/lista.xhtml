@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-dashboard.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="conteudo-dashboard">
+        <b:messages />
+        <h3>listagem de participantes</h3>
+        <h:form>
+            <p:dataTable id="tbParticipante" value="#{participanteController.participantes}" var="g" 
+                         paginator="true" reflow="true">
+                <p:column headerText="id" >
+                    <h:outputText value="#{g.id}"/>
+                </p:column>
+               
+                <p:column headerText="nome" filterBy="#{g.nome}">
+                    <h:outputText value="#{g.nome}"/>
+                </p:column>
+                
+                <p:column headerText="email" filterBy="#{g.usuario.email}">
+                    <h:outputText value="#{g.usuario.email}"/>
+                </p:column>
+
+                <p:column headerText="arquivo" width="100">
+                    <p:graphicImage value="#{participanteController.arquivoParticipante}" width="50" height="50">
+                        <f:param name="id" value="#{g.id}"/>
+                    </p:graphicImage>
+                </p:column>
+
+                <p:column headerText="tipo" >
+                    <h:outputText value="#{g.tipo}"/>
+                </p:column>
+
+                <p:column headerText="opções" >
+                    <p:panelGrid columns="3" layout="grid">
+                        <p:commandButton ajax="false" action="#{participanteController.editar(g.id)}" icon="ui-icon-pencil"/>
+                        <p:commandButton actionListener="#{participanteController.deletar(g)}" update="tbParticipante" icon="ui-icon-trash">
+                            <p:confirm header="Confirmar" message="Deseja excluir?" icon="ui-icon-trash" />
+                        </p:commandButton>
+                    </p:panelGrid>
+                </p:column>  
+            </p:dataTable>
+
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

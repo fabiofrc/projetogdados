@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-detalhes.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="conteudo-topo">
+        <b:jumbotron style="background: white;">
+            <b:container>
+                <center>
+                    <h1><b>#{noticiaController.noticia.titulo}.</b></h1>
+                    <h3 style="color: gray;"><b>#{noticiaController.noticia.subTitulo}.</b></h3>
+                </center>
+            </b:container>
+        </b:jumbotron>
+    </ui:define>
+
+    <ui:define name="conteudo-detalhes">
+        <link type="text/css" href="#{request.contextPath}/resources/css/estilo-timeline-02.css" rel="stylesheet" />
+
+        <f:metadata>
+            <f:viewParam name="id" value="#{noticiaController.noticia}"/>
+            <f:viewAction action="#{noticiaController.inicializar()}" />
+        </f:metadata>
+
+        <b:jumbotron style="background: white;">
+            <h:form>
+                <b:row>
+                    <b:column col-md="9">
+                        <h:outputLabel value=" Por gdados, tecnologia — Boa Vista - " />
+                        <h:outputText value="#{noticiaController.noticia.dataRegistro}"  >
+                            <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                        </h:outputText>
+
+                        <h:outputLabel value=" - Atualizado há - " />
+                        <h:outputText value="#{noticiaController.noticia.dataatuAlizacao}" >
+                            <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                        </h:outputText>
+                    </b:column>
+                    <b:column col-md="3">
+                        <b:socialShare shares="twitter,linkedin,facebook" showLabel="true" show-count="true" text="gdados!"/>
+                    </b:column>
+                </b:row>
+
+                <hr/>
+                <br></br>
+
+                <p> 
+                    <h:outputText value="#{noticiaController.noticia.descricao}" escape="false"/>
+                </p>
+            </h:form>
+        </b:jumbotron>
+
+        <hr style="border: 4px solid #F8F8F8;"/>
+        <br></br>
+        <br></br>
+
+        <b:jumbotron style="background: ghostwhite;">
+
+            <b:row style="margin-top: 5%; width: 100%; margin: 0 auto;">
+                <b:column col-md="12">
+                    <b:alert severity="warning">
+                        <strong>Atenção!</strong>   Todos os <strong>comentários</strong> são de responsabilidade de seus autores, tendo em vista que não diz respeito a opinião deste <strong>site.</strong>
+                        os conetários deve ser vinculado ao temas da postagens do site. 
+                    </b:alert>
+                    <hr/>
+                    <br></br>
+
+                    <h:form id="form">
+                        <b:growl id="msgs" />
+                        <h3>#{comentarioController.getContadorComentarioByNoticia(noticiaController.noticia.id)} Comentários</h3>
+                        <b:panelGrid columns="2">
+                            <b:inputText value="#{comentarioController.comentario.descricao}" 
+                                         placeholder="Digite um comentário..."
+                                         required="true" requiredMessage="informe sua descrição"/>
+                            <b:commandButton value="enviar" icon-awesome="fa-check"
+                                             action="#{comentarioController.enviarComentario(noticiaController.noticia.id)}">
+                                <f:ajax execute="@form" render="form" />
+                            </b:commandButton>
+                        </b:panelGrid>
+                    </h:form>
+                </b:column>
+
+                <b:column col-md="12">
+                    <h:form>
+                        <p:dataScroller value="#{comentarioController.buscaNoticia(noticiaController.noticia.id)}" var="c" chunkSize="3" style="background: #FFF;">
+                            <div class="timeline-wrapper"> 
+                                <ul class="StepProgress">
+                                    <li class="StepProgress-item current">
+                                        <div class="bold time">  
+                                            <h:outputText value="#{c.dataRegistro}">
+                                                <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yy HH:mm"/>
+                                            </h:outputText>
+                                        </div> 
+                                        <div class="bold">
+                                            <p:graphicImage value="#{participanteController.arquivoParticipante}" class="foto-perfil-comentario">
+                                                <f:param name="id" value="#{c.participante.id}"/>
+                                            </p:graphicImage>
+                                            <h:outputText value="#{c.participante.nome}" />
+                                        </div>
+                                        <div>
+                                            <h:outputText value="#{c.descricao}" />
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <f:facet name="loader">
+                                <b:commandButton value="VER MAIS COMENTÁRIOS >>" style="width: 100%;font-weight: bold;"/>
+                            </f:facet>
+                        </p:dataScroller>
+                    </h:form>
+                </b:column>
+            </b:row>
+
+        </b:jumbotron>
+
+    </ui:define>
+</ui:composition>

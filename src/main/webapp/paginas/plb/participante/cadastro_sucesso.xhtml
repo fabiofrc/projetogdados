@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-cadastro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="conteudo-cadastro">
+
+        <h3>Faça parte do projeto gdados</h3>
+        <p>Transformando dados em soluções</p>
+        <b:messages id="msgs"/>
+
+        <h:form id="form">
+            <b:panelGrid columns="2">
+                <b:commandButton value="voltar pra home" action="#{usuarioController.home()}" look="success" icon-awesome="fa fa-home" style="width:100%">
+                    <f:ajax execute="@form" render="form" />
+                </b:commandButton>
+
+                <b:commandButton value="fazer login" action="#{usuarioController.login()}" look="danger" icon-awesome="fa fa-user" style="width:100%">
+                    <f:ajax execute="@form" render="form" />
+                </b:commandButton>
+            </b:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

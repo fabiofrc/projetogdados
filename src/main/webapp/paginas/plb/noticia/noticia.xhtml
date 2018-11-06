@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-noticia.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+    <ui:define name="conteudo-noticia-esq">
+        <h:form>
+            <p:dataScroller id="dtNoticias2" value="#{noticiaController.noticiasDsiponivel}" var="n" chunkSize="3" >
+                <h:link outcome="detalhes">
+                    <b:row>
+                        <b:column col-md="4" style="margin-top: 0%;">
+                            <p:graphicImage value="#{noticiaController.image1}" class="home-img-noticia">
+                                <f:param name="id" value="#{n.id}"/>
+                            </p:graphicImage>
+                        </b:column>
+                        <b:column col-md="8" style="margin-top: -1%;">
+                            <h2><b>#{n.titulo}</b></h2>
+                            <p>#{n.subTitulo}</p>
+                            <p style="color: gray;font-size: 10pt;">#{n.subCategoria.nome}</p>
+                            <h:outputText value="#{n.dataatuAlizacao}" style="font-size: 8pt;">
+                                <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                            </h:outputText>
+                        </b:column>
+                    </b:row>
+
+                    <f:param name="id" value="#{n.id}" />
+                </h:link>
+
+                <hr/>
+
+                <f:facet name="loader">
+                    <b:commandButton value="veja mais >>" />
+                </f:facet>
+            </p:dataScroller>
+        </h:form>
+    </ui:define>
+</ui:composition>

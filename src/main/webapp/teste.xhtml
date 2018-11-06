@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template-sobre.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo-sobre">
+        <b:container>
+            <h:form>
+                <h1>Compartilhar em rede social</h1>
+                <img src="resources/img/screen_shot_2016-11-24_at_12.15.59_pm.png" width="400" height="300"/>
+                <p:graphicImage value="resources/img/gdados-01-banco-dados.png" width="400" height="300"/>
+
+                <b:socialShare shares="twitter,linkedin,facebook" showLabel="true" show-count="true" text="gdados!"/>
+            </h:form>
+        </b:container>
+    </ui:define>
+</ui:composition>

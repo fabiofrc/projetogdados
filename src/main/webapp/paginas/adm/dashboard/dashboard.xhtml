@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-dashboard.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo-dashboard">
+
+        <h2>Dashboard</h2>
+
+        <style type="text/css">
+            h4{
+                color: #ffffff;
+            }
+            h3{
+                color: #ffffff;
+            }
+        </style>
+
+        <h:form>
+            <b:row>
+                <b:column col-md="2">
+                    <b:thumbnail style="text-align: center;background: #FBA02C;">
+                        <h4>Categoria <i class="fa fa-android"></i></h4>
+                        <h3>#{categoriaController.contador}</h3>
+                        <b:commandButton ajax="false" action="#{categoriaController.lista()}" value="Veja mais detalhes »" />
+                    </b:thumbnail>
+                </b:column>
+
+                <b:column col-md="2">
+                    <b:thumbnail style="text-align: center;background: blue;">
+                        <h4>Subcategoria <i class="fa fa-android"></i></h4>
+                        <h3>#{subCategoriaController.contador}</h3>
+                        <b:commandButton ajax="false" action="#{subCategoriaController.lista()}" value="Veja mais detalhes »" />
+                    </b:thumbnail>
+                </b:column>
+
+                <b:column col-md="2">
+                    <b:thumbnail style="text-align: center;background: #FF6A6A;">
+                        <h4>Postagem <i class="fa fa-comment"></i></h4>
+                        <h3>#{noticiaController.contador}</h3>
+                        <b:commandButton ajax="false" action="#{noticiaController.lista()}" value="Veja mais detalhes »"/>
+                    </b:thumbnail>
+                </b:column>
+
+                <b:column col-md="2">
+                    <b:thumbnail style="text-align: center;background: #009966;">
+                        <h4>Participantes <i class="fa fa-graduation-cap"></i></h4>
+                        <h3>#{participanteController.contador}</h3>
+                        <b:commandButton ajax="false" action="#{participanteController.lista()}" value="Veja mais detalhes »"/>
+                    </b:thumbnail>
+                </b:column>
+
+                <b:column col-md="2">
+                    <b:thumbnail style="text-align: center;background: #330066;">
+                        <h4>Usuário <i class="fa fa-users"></i></h4>
+                        <h3>#{usuarioController.contador}</h3>
+                        <b:commandButton ajax="false" action="#{usuarioController.lista()}" value="Veja mais detalhes »"/>
+                    </b:thumbnail>
+                </b:column>
+
+                <b:column col-md="2">
+                    <b:thumbnail style="text-align: center;background: #B8312F;">
+                        <h4>Grupo <i class="fa fa-users"></i></h4>
+                        <h3>#{grupoController.contador}</h3>
+                        <b:commandButton ajax="false" action="#{grupoController.lista()}" value="Veja mais detalhes »"/>
+                    </b:thumbnail>
+                </b:column>
+            </b:row>
+        </h:form>
+
+
+        <h:form>
+            <b:row>
+                <b:column col-md="6">
+                    <b:panel>
+                        <f:facet name="heading">
+                            <i class="fa fa-user" style="padding-right:20px" />
+                            <h:outputText value="Usuários" />
+                            <b:badge style="margin-left:10px; background-color:#5cb85c" value="menu"  />
+                        </f:facet>
+                        <b:dataTable value="#{usuarioController.usuarios}" 
+                                     var="u"
+                                     excel="true"
+                                     csv="true"
+                                     pdf="true"
+                                     columnVisibility="true"
+                                     copy="true"
+                                     print="true">
+
+                            <b:dataTableColumn value="#{u.id}" />
+                            <b:dataTableColumn value="#{u.email}" />
+                        </b:dataTable>
+                    </b:panel>
+
+                    <br></br>
+
+                    <b:panel>
+                        <f:facet name="heading">
+                            <i class="fa fa-users" style="padding-right:20px" />
+                            <h:outputText value="Participantes" />
+                            <b:badge style="margin-left:10px; background-color:#5cb85c" value="menu"  />
+                        </f:facet>
+                        <b:dataTable value="#{participanteController.participantes}" 
+                                     var="u" 
+                                     excel="true"
+                                     csv="true"
+                                     pdf="true"
+                                     columnVisibility="true"
+                                     copy="true"
+                                     print="true">
+
+                            <b:dataTableColumn value="#{u.id}" />
+                            <b:dataTableColumn value="#{u.nome}" />
+                            <b:dataTableColumn>
+                                <p:graphicImage value="#{participanteController.arquivoParticipante}" width="30" height="30">
+                                    <f:param name="id" value="#{u.id}"/>
+                                </p:graphicImage>
+                            </b:dataTableColumn>
+
+                            <b:dataTableColumn value="#{u.tipo}" />
+                        </b:dataTable>
+                    </b:panel>
+                </b:column> 
+
+
+                <b:column col-md="6">
+                    <p:dataGrid var="n" value="#{noticiaController.noticias}" columns="3" layout="grid"
+                                rows="9" paginator="true" id="cars"
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="6,12,16">
+
+                        <f:facet name="header">
+                            Notícias
+                        </f:facet>
+
+                        <p:panel header="#{n.id}" style="text-align:center;height: 250px;">
+                            <h:panelGrid columns="1" style="width:100%">
+
+                                <p:graphicImage value="#{noticiaController.image1}" class="foto-perfil">
+                                    <f:param name="id" value="#{n.id}"/>
+                                </p:graphicImage>
+
+                                <h:outputText value="#{n.titulo}" />
+
+                                <p:commandButton ajax="false" action="#{noticiaController.view(n.id)}" icon="ui-icon-search"/>
+                            </h:panelGrid>
+                        </p:panel>
+
+                    </p:dataGrid>
+                </b:column>
+            </b:row>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-pesquisa.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+    <ui:define name="conteudo-noticia-pesquisa">
+        <style type="text/css">
+            .ui-datascroller .ui-datascroller-content {
+                padding: 4px 10px;
+                border: 0px solid #A8A8A8;
+            }
+        </style>
+
+       
+        <h:form>
+            <p:dataScroller id="dtNoticias2" value="#{noticiaController.noticiasDsiponivel}" var="n" chunkSize="3" >
+                <h:commandLink action="#{noticiaController.view(n.id)}">
+                    <b:row>
+                        <b:column col-md="4" style="margin-top: 0%;">
+                            <p:graphicImage value="#{noticiaController.image1}" class="home-img-noticia">
+                                <f:param name="id" value="#{n.id}"/>
+                            </p:graphicImage>
+                        </b:column>
+                        <b:column col-md="8" style="margin-top: -1%;">
+                            <h4>#{n.titulo}</h4>
+                            <p>#{n.subTitulo}</p>
+                            <h:outputText value="#{n.dataatuAlizacao}" style="font-size: 8pt;">
+                                <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                            </h:outputText>
+                        </b:column>
+                    </b:row>
+                </h:commandLink>
+
+                <p:separator style="border: 1px solid #eeeeee;margin-top:5%;" />
+
+                <f:facet name="loader">
+                    <b:commandButton value="veja mais >>" look="primary" icon-awesome="fa-plus-square-o"/>
+                </f:facet>
+            </p:dataScroller>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

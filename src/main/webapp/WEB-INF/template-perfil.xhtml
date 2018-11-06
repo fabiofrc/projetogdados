@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="titulo"></ui:define>
+
+
+    <ui:define name="conteudo">
+
+        <b:container>
+            <b:jumbotron style="background-color: #f1f1f1;">
+                <b:row>
+                    <b:column col-md="2" style="border: 0px solid #9d9d9d;">
+                        <h:form id="forme">
+                            <center>
+                                <div style="width: 100%;height: 120px;">
+                                    <b:panelGrid col-spans="12">
+                                        <p:graphicImage value="#{participanteController.arquivoParticipante}" class="foto-perfil">
+                                            <f:param name="id" value="#{participanteController.participante.id}"/>
+                                        </p:graphicImage>
+                                        <br></br>
+                                        <p style="font-size: 10pt;">#{participanteController.participante.nome}</p>
+                                    </b:panelGrid>
+                                </div>
+
+                                <br></br>
+                                
+                                <h:panelGrid style="margin-top: 4%;" columns="2" cellpadding="10">
+                                    <i class="fa fa-edit"></i>
+                                    <b:commandLink ajax="false" action="#{participanteController.editarPerfil()}" value=" editar perfil »" />
+
+                                    <i class="fa fa-edit"></i>
+                                    <b:commandLink ajax="false" action="#{participanteController.novaSenha()}" value=" nova senha »" />
+
+                                    <i class="fa fa-comment-o"></i>
+                                    <b:commandLink ajax="false" action="#{participanteController.visualisarComentario()}" value=" meus comentários »" />
+                                </h:panelGrid>
+                            </center>
+                        </h:form>
+                    </b:column>
+                    <b:column col-md="10">
+                        <ui:insert name="conteudo-perfil-dir"/>
+                    </b:column>
+                </b:row>
+            </b:jumbotron>
+        </b:container>
+
+    </ui:define>
+
+</ui:composition>

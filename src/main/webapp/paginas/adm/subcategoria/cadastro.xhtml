@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-cadastro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="conteudo-cadastro">
+        <h:form id="form">
+            <b:messages />
+            <b:panelGrid col-spans="12">
+                <b:inputText label="Nome da subCategoria" value="#{subCategoriaController.subCategoria.nome}" 
+                             placeholder="nome da subCategoria" required="true" requiredMessage="informe o nome da subCategoria"/>
+
+                <h:outputLabel value="Categoria *" for="categoria"/>
+                <b:selectOneMenu value="#{subCategoriaController.subCategoria.categoria}"  
+                                 required="true" requiredMessage="campo obrigatório">
+                    <f:attribute name="collectionType" value="java.util.ArrayList" />
+                    <f:selectItem itemLabel="categoria" itemValue="" />
+                    <f:selectItems value="#{categoriaController.categorias}" var="cat"
+                                   itemLabel="#{cat.nome}" itemValue="#{cat}" />
+                </b:selectOneMenu>
+
+                <h:outputLabel value="Descrição detalhada *" for="descricao"/>
+                <p:editor id="descricao" value="#{subCategoriaController.subCategoria.descricao}" height="300"
+                          required="true" requiredMessage="informe a descrição" />
+            </b:panelGrid>
+
+            <b:panelGrid col-spans="12" style="margin-top: 1%;">
+                <b:commandButton value="enviar" action="#{subCategoriaController.salvar()}" look="primary" icon-awesome="fa fa-checked" style="width:100%">
+                    <f:ajax execute="@form" render="form" />
+                </b:commandButton>
+            </b:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

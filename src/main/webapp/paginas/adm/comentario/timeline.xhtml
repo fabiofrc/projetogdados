@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-detalhes.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="conteudo-topo">
+        <b:jumbotron>
+            <b:container>
+                <h1><b>Todos os comentários</b></h1>
+                <p>
+                    <h3>#{comentarioController.contador}  Comentários <i class="fa fa-comment-o"></i></h3>
+                </p>
+            </b:container>
+        </b:jumbotron>
+    </ui:define>
+
+    <ui:define name="conteudo-detalhes">
+        <link type="text/css" href="#{request.contextPath}/resources/css/estilo-timeline.css" rel="stylesheet" />
+        <div >
+            <section id="conference-timeline">
+                <h:form>
+                    <div class="timeline-start">Início</div>
+                    <div class="conference-timeline-content">
+                        <p:dataScroller value="#{comentarioController.comentarios}" var="c" chunkSize="3">
+                            <div class="conference-center-line"></div>
+
+                            <!-- Article -->
+                            <div class="timeline-article">
+                                <div class="content-left-container">
+                                    <div class="content-left">
+                                        <p> <h:outputText value="#{c.noticia.titulo}" /> <span class="article-number"><h:outputText value="#{c.noticia.id}" /></span></p>
+                                    </div>
+                                    <span class="timeline-author"> <h:outputText value="#{c.noticia.subCategoria.nome}" /></span>
+                                </div>
+                                <div class="content-right-container">
+                                    <div class="content-right">
+                                        <p> <h:outputText value="#{c.descricao}" /> <span class="article-number"><h:outputText value="#{c.id}" /></span></p>
+                                    </div>
+                                    <span class="timeline-author"><h:outputText value="#{c.participante.nome}" /></span>
+                                </div>
+                                <div class="meta-date">
+                                    <span class="date"> 
+                                        <h:outputText value="#{c.dataRegistro}">
+                                            <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd"/>
+                                        </h:outputText>
+                                    </span>
+                                    <span class="month">
+                                        <h:outputText value="#{c.dataRegistro}">
+                                            <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="MM"/>
+                                        </h:outputText>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- // Article -->
+
+                            <f:facet name="loader">
+                                <b:commandButton value="veja mais >>" />
+                            </f:facet>
+                        </p:dataScroller>
+                    </div>
+                    <div class="timeline-end">Fim</div>
+                </h:form>
+            </section>
+        </div>
+    </ui:define>
+
+</ui:composition>

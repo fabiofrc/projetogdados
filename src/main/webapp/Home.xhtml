@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="conteudo">
+
+        <script>
+            var p = document.getElementById('sloga');
+            var texto = 'Transformando dados em soluções!';
+
+            function escrever(str, el) {
+                var char = str.split('').reverse();
+                var typer = setInterval(function () {
+                    if (!char.length)
+                        return clearInterval(typer);
+                    var next = char.pop();
+                    el.innerHTML += next;
+                }, 100);
+            }
+
+            escrever(texto, p);
+        </script>
+
+    
+
+        <b:form>
+            <b:jumbotron style="background:blue;">
+                <b:container>
+                    <b:row>
+                        <b:column col-md="6">
+                            <h1 style="color: white;">Projeto gdados</h1>
+                            <p id="sloga" style="color: white;">Transformando dados em soluções!</p>
+                            <p>
+                                <p><b:commandButton ajax="false" action="#{noticiaController.visualisarNoticias()}" value="Tendências e tecnologias »" look="danger"/></p>
+                            </p>
+                        </b:column>
+                        <b:column col-md="6">
+                            <img src="resources/img/bigdataanalitict.png" class="home-img"/>
+                        </b:column>
+                    </b:row>
+                </b:container>
+            </b:jumbotron>
+        </b:form>
+
+        <b:form>
+            <b:container>
+                <b:row>
+                    <b:column col-md="4">
+                        <center>
+                            <h2><i class="fa fa-pie-chart"></i> Análise de dados</h2>
+                            <p>O mercado é cada vez mais complexo e competitivo. Com isso é preciso interpretar sinais, reagir rapidamente às constantes transformações e não perder de vista indicativos úteis. 
+                                Sem o suporte de métodos e de tecnologias de análise de dados, essa missão torna-se praticamente impossível. </p>
+                        </center>
+                    </b:column>
+
+                    <b:column col-md="4">
+                        <center>
+                            <h2><i class="fa fa-database"></i> Integração de banco de dados</h2>
+                            <p>Integração de dados é a combinação de processos técnicos e de negócios utilizados para combinar dados de fontes distintas em informações relevantes e de valor. 
+                                Uma solução completa de integração de dados entrega dados confiáveis de uma variedade de fontes. </p>
+                        </center>
+                    </b:column>
+                    <b:column col-md="4">
+                        <center>
+                            <h2><i class="fa fa-code"></i> Desenvolvimento</h2>
+                            <p>Desenvolvimento de sistema web/mobile utilizando como base: dados aberto, dados legado público ou privado, criação de dashboard dinâmica. </p>
+                        </center>
+                    </b:column>
+                </b:row>
+                <br></br>
+            </b:container>
+        </b:form>
+
+        <b:form>
+            <b:jumbotron style="background: gray;">
+                <b:container>
+                    <b:row>
+                        <b:column col-md="6">
+                            <img src="resources/img/gdados-01-banco-dados.png" class="home-img"/>
+                        </b:column>
+                        <b:column col-md="6">
+                            <h2 style="color: white;">Banco de dados</h2>
+                            <p style="color: white;">Bancos de dados ou bases de dados são um conjunto de arquivos relacionados entre si com registros
+                                sobre pessoas, lugares ou coisas. São coleções organizadas de dados que se relacionam de forma a criar algum sentido
+                                e dar mais eficiência durante uma pesquisa ou estudo. </p>
+                            <p><b:commandButton action="/paginas/plb/tecnologia/bancodados?faces-redirect=true" value="saiba mais »" /></p>
+                        </b:column>
+                    </b:row>
+                </b:container>
+            </b:jumbotron>
+        </b:form>
+
+        <b:container>
+            <b:row>
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-laptop"></i> Machine Learning</h2>
+                        <p>Aprendizado de Máquina é um bilhete de primeira classe para as carreiras mais excitantes na análise de dados hoje.
+                            A medida em fontes de dados proliferam, juntamente com o poder de computação para processá-los,
+                            a análise de dados se torna cada vez mais simples a aquisição rápida de e previsões. </p>
+                    </center>
+                </b:column>
+
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-code"></i> NoSQL</h2>
+                        <p>NoSQL é um movimento que promove soluções de armazenamento de dados não relacionais. </p>
+                    </center>
+                </b:column>
+
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-map-marker"></i> Geoprocessamento</h2>
+                        <p>Geoprocessamento é o tratamento das informações geográficas, ou de dados georreferenciados, por meio de softwares específicos e cálculos. 
+                            Ou, ainda, o conjunto de técnicas relacionadas ao tratamento da informação espacial. </p>
+                    </center>
+                </b:column>
+            </b:row>
+            <br></br>
+        </b:container>
+
+        <b:form>
+            <b:jumbotron style="background: blue;">
+                <b:container>
+                    <b:row>
+                        <b:column col-md="6">
+                            <h2 style="color: white;">Análise de dados</h2>
+                            <p style="color: white;">Análise de dados é transformar números em informação, em significado, em solução de problemas. </p>
+                            <p><b:commandButton action="/paginas/plb/tecnologia/analisedados?faces-redirect=true" value="saiba mais »" /></p>
+                        </b:column>
+
+                        <b:column col-md="6">
+                            <img src="resources/img/gdados-02-analise-dados.png" class="home-img"/>
+                        </b:column>
+                    </b:row>
+                </b:container>
+            </b:jumbotron>
+        </b:form>
+
+        <b:container>
+            <b:row>
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-database"></i> Mineração de dados</h2>
+                        <p>Prospecção de dados ou mineração de dados (também conhecida pelo termo inglês data mining)
+                            é o processo de explorar grandes quantidades de dados à procura de padrões consistentes, 
+                            como regras de associação ou sequências temporais, para detectar relacionamentos sistemáticos entre variáveis, detectando assim novos ...</p>
+                    </center>
+                </b:column>
+
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-dashboard"></i> Dashboard </h2>
+                        <p>Integração de dados é a combinação de processos técnicos e de negócios utilizados para combinar dados de fontes distintas em informações relevantes e de valor. 
+                            Uma solução completa de integração de dados entrega dados confiáveis de uma variedade de fontes. </p>
+                    </center>
+                </b:column>
+
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-bar-chart-o"></i> Insight</h2>
+                        <p>Insights é uma ferramenta exclusiva da Lomadee que permite que você entenda seu tráfego, suas conversões e o 
+                            comportamento do seu público em tempo real ao selecionar o filtro de análise para hoje, para as últimas 24hs ou para os últimos 7 dias. </p>
+                    </center>
+                </b:column>
+            </b:row>
+            <br></br>
+        </b:container>
+
+        <b:form>
+            <b:jumbotron style="background: gray;">
+                <b:container>
+                    <b:row>
+                        <b:column col-md="6">
+                            <img src="resources/img/gdados-01-geoprocessamneto.png" class="home-img"/>
+                        </b:column>
+
+                        <b:column col-md="6">
+                            <h2 style="color: white;">Geoprocessamento</h2>
+                            <p style="color: white;">Geoprocessamento é o tratamento das informações geográficas, ou de dados georreferenciados, por meio de softwares específicos e cálculos. 
+                                Ou, ainda, o conjunto de técnicas relacionadas ao tratamento da informação espacial. </p>
+                            <p><b:commandButton action="/paginas/plb/tecnologia/geoprocessamento?faces-redirect=true" value="saiba mais »" /></p>
+                        </b:column>
+                    </b:row>
+                </b:container>
+            </b:jumbotron>
+        </b:form>
+
+
+        <b:container>
+            <b:row>
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-database"></i> banco de dados geográficos<br/></h2>
+                        <p>Bancos de Dados Geográficos: São banco de dados preparados para armazenar dados sobre informações espaciais. 
+                            São comumente chamados de Sistemas de Informações Geográficas. Este tipo de banco de dados tem o intuito 
+                            manipular um imenso volumes de informações de grande complexidade, como mapas e imagens de satélite. </p>
+                    </center>
+                </b:column>
+
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-cogs"></i> integração</h2>
+                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, 
+                            ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    </center>
+                </b:column>
+
+                <b:column col-md="4">
+                    <center>
+                        <h2><i class="fa fa-bar-chart-o"></i> análise espacial</h2>
+                        <p>Apresenta-se um conjunto de técnicas estatísticas que faz uso explícito da localização dos fenômenos. </p>
+                    </center>
+                </b:column>
+            </b:row>
+            <br></br>
+        </b:container>
+
+        <b:form>
+            <b:jumbotron style="background: gray;">
+                <b:container>
+                    <b:row>
+                        <b:column col-md="6">
+                            <h2 style="color: white;">Contato</h2>
+                            <p style="color: white;">Junte-se a nós, e fique por dentro de novidades e tendências sobre tecnologias de banco de dados e ciência de dados.  </p>
+                            <p><b:commandButton ajax="false" action="#{participanteController.novo()}" value="cadastre-se »" /></p>
+                        </b:column>
+
+                        <b:column col-md="6">
+                            <h3 style="color: white;"><i class="fa fa-envelope-o"></i> Email: gdados@gdados.com</h3>
+                            <h3 style="color: white;"><i class="fa fa-envelope-o"></i> Email: projetogdados@gmail.com</h3>
+                            <h3 style="color: white;"><i class="fa fa-phone"></i> Fone: (95)99154-8667</h3>
+                        </b:column>
+                    </b:row>
+                </b:container>
+            </b:jumbotron>
+        </b:form>
+    </ui:define>
+</ui:composition>

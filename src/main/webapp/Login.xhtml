@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="conteudo">
+
+        <div align="center" style="margin-top: 5%;">
+            <h:form id="form" prependId="false">
+                <center>
+                    <h3 style="color: gray;"><i class="fa fa-database"></i> GDADOS</h3>
+                    <h5>Tranformando dados em solução</h5>
+                </center>
+
+                <h:panelGrid columns="1" cellpadding="20" style="margin-top: 2%;">
+                    <b:messages/>
+                    <p:inputText label="Email" id="username" value="#{loginBean.email}" size="30"
+                                 placeholder="e-mail" required="true" requiredMessage="Informe o e-mail">
+                        <p:focus />
+                    </p:inputText>
+
+                    <br></br>
+
+                    <p:password label="Senha" id="password" size="30"
+                                placeholder="senha" required="true" requiredMessage="Informe a senha" >
+                    </p:password>
+
+                    <br></br>
+
+                    <p:commandButton value="entrar" action="#{loginBean.login}" ajax="false" 
+                                     style="width: 100%;background: blue;color: white;" icon="ui-icon-check">
+                        <f:ajax execute="@form" render="form" />
+                    </p:commandButton>
+                </h:panelGrid>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>
+

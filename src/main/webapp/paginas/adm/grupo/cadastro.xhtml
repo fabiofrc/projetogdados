@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-cadastro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="conteudo-cadastro">
+        <h:form id="form">
+            <b:messages/>
+            <b:panelGrid col-spans="12">
+                <b:inputText label="Nome do grupo" value="#{grupoController.grupo.nome}"
+                             placeholder="nome do grupo" required="true"/>
+                <b:inputText label="Descrição do grupo" value="#{grupoController.grupo.descricao}" 
+                            placeholder="descrição do grupo" required="true"/>
+            </b:panelGrid>
+
+            <b:panelGrid col-spans="12" style="margin-top: 1%;">
+                <b:commandButton value="enviar" action="#{grupoController.salvar()}" look="primary" icon-awesome="fa fa-checked" style="width:100%">
+                    <f:ajax execute="@form" render="form" />
+                </b:commandButton>
+            </b:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

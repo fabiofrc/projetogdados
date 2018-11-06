@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="conteudo">
+
+        <b:jumbotron style="background: white;">
+            <b:container>
+                <b:row>
+                    <b:column col-md="3">
+                        <h:form>
+                            <center><h3 style="font-weight: bold;">Notícias</h3></center>
+                            <p:dataList value="#{noticiaController.noticiasDsiponivel}" var="n">
+                                <p:commandLink action="#{comentarioController.createPieModel(n)}" ajax="false">
+                                    <h:outputText value="#{n.titulo}"/>
+                                </p:commandLink>
+                            </p:dataList>
+                        </h:form>
+                    </b:column>
+
+                    <b:column col-md="9">
+                        <center><h3 style="font-weight: bold;">Gráfico de comentário por notícias</h3></center>
+                        <ui:insert name="conteudo-grafico-conteudo"/>
+                    </b:column>
+                </b:row>
+            </b:container>
+        </b:jumbotron>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-cadastro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="conteudo-cadastro">
+        <h:form id="formGrupo">
+
+            <p:dataTable id="tbGrupo" var="u" value="#{grupoController.grupos}" 
+                         reflow="true" selection="#{grupoController.grupoSelecionado}"
+                         rows="20" emptyMessage="nenhum registro"
+                         rowKey="#{u.id}">
+                <f:facet name="header">
+                    grupos selecionados
+                </f:facet>
+
+                <p:column selectionMode="multiple" style="width:100px;text-align:center"/>
+
+                <p:column headerText="Id" sortBy="#{u.id}" filterBy="#{u.id}" >
+                    <h:outputText value="#{u.id}"/>
+                </p:column>
+
+                <p:column headerText="descrição" sortBy="#{u.descricao}" filterBy="#{u.descricao}">
+                    <h:outputText value="#{u.descricao}" />
+                </p:column>
+            </p:dataTable>
+
+            <p:commandButton ajax="false" value="teste" action="#{grupoController.teste()}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

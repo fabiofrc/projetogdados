@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-perfil.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="conteudo-perfil-dir">
+
+        <h6 style="color: red;">(*) campos obrigatórios</h6>
+
+        <h3>Cadastrar nova senha</h3>
+
+        <h:form id="form">
+            <b:messages id="msgs"/>
+            <b:panelGrid col-spans="12" id="pgParticipante">
+                  <b:inputSecret label="Senha" value="#{participanteController.participante.usuario.senha}"
+                               placeholder="********" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputSecret>
+            </b:panelGrid>
+
+            <br></br>
+
+            <b:panelGrid col-spans="12">
+                <b:commandButton value="enviar" action="#{participanteController.salvarNovaSenha()}" 
+                                 look="primary" icon-awesome="fa fa-checked" style="width:100%">
+                    <f:ajax execute="@form" render="form" />
+                </b:commandButton>
+            </b:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="titulo"></ui:define>
+
+
+    <ui:define name="conteudo">
+       
+        <b:row>
+            <b:column col-md="2">
+                <h3 style="color: gray;">Menu</h3>
+                <h:form>
+                    <b:panel>
+                        <f:facet name="heading">
+                            <i class="fa fa-dashboard" style="padding-right:10px" />
+                            <h:outputText value="listagem" />
+                            <b:badge style="margin-left:10px; background-color:#5cb85c" value="menu"  />
+                        </f:facet>
+                        <b:commandLink ajax="false" action="#{categoriaController.lista()}" value="Veja mais categoria »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{subCategoriaController.lista()}" value="Veja mais subcategoria »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{usuarioController.lista()}" value="Veja mais usuario »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{grupoController.lista()}" value="Veja mais grupo »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{participanteController.lista()}" value="Veja mais participante »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{noticiaController.lista()}" value="Veja mais postagem »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{comentarioController.lista()}" value="Veja mais comentários »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{comentarioController.comentariosDetalhes()}" value="Comentários em detalhes »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{comentarioController.timeline()}" value="Timeline em detalhes »" />
+                        <br></br>
+                        
+                        <b:commandLink ajax="false" action="#{comentarioController.exportarComentario()}" value="exportar comentarios »" />
+                        <br></br>
+
+                        <p:separator/>
+
+                        <b:commandLink ajax="false" action="#{categoriaController.novo()}" value="Nova categoria »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{subCategoriaController.novo()}" value="Nova subcategoria »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{usuarioController.novo()}" value="Nova usuario »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{grupoController.novo()}" value="Novo grupo »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{participanteController.novo()}" value="Novo participante »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{noticiaController.novo()}" value="Nova postagem »" />
+                    </b:panel>
+                </h:form>
+            </b:column>
+
+            <b:column col-md="10">
+                <ui:insert name="conteudo-dashboard"/>
+            </b:column>
+        </b:row>
+
+
+    </ui:define>
+
+</ui:composition>

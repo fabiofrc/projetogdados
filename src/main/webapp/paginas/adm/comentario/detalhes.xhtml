@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-detalhes.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="conteudo-topo">
+        <b:jumbotron>
+            <b:container>
+                <h1><b>#{comentarioController.comentario.participante.nome}</b></h1>
+                <p>
+                    #{comentarioController.comentario.noticia.titulo}.
+                </p>
+            </b:container>
+        </b:jumbotron>
+    </ui:define>
+
+    <ui:define name="conteudo-detalhes">
+        <h:form>
+            <div class="box-mensagem">
+                <p> 
+                    <h:outputText value="#{comentarioController.comentario.descricao}" />
+                </p>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

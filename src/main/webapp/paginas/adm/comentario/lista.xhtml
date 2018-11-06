@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-dashboard.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="conteudo-dashboard">
+        <b:messages />
+        <h3>listagem de comentários</h3>
+        <h:form>
+            <p:dataTable id="tbCategoria" value="#{comentarioController.comentarios}" var="c"
+                         paginator="true" reflow="true">
+                <p:column headerText="id" width="100">
+                    <h:outputText value="#{c.id}"/>
+                </p:column>
+                
+                <p:column headerText="autor" filterBy="#{c.participante.nome}">
+                    <h:outputText value="#{c.participante.nome}"/>
+                </p:column>
+               
+                <p:column headerText="descrição" filterBy="#{c.descricao}">
+                    <h:outputText value="#{c.descricao}"/>
+                </p:column>
+                
+                <p:column headerText="notícias" filterBy="#{c.noticia.titulo}">
+                    <h:outputText value="#{c.noticia.titulo}"/>
+                </p:column>
+
+                <p:column headerText="opções" >
+                    <p:panelGrid columns="3" layout="grid">
+                        <p:commandButton ajax="false" action="#{comentarioController.view(c.id)}" icon="ui-icon-search"/>
+                        <p:commandButton ajax="false" action="#{comentarioController.editar(c.id)}" icon="ui-icon-pencil"/>
+
+                        <p:commandButton actionListener="#{comentarioController.deletar(c)}" update="tbCategoria" icon="ui-icon-trash">
+                            <p:confirm header="Confirmar" message="Deseja excluir?" icon="ui-icon-trash" />
+                        </p:commandButton>
+                    </p:panelGrid>
+                </p:column>  
+            </p:dataTable>
+
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

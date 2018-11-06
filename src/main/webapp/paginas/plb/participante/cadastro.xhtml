@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-cadastro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="conteudo-cadastro">
+
+        <p>Junte-se a nós, e fique por dentro de novidades e tendências sobre tecnologias de banco de dados e ciência de dados.</p>
+        <h6 style="color: red;">(*) campos obrigatórios</h6>
+
+        <h3>#{participanteController.editando ? 'Edição de usuario' : 'Novo usuário'}</h3>
+
+        <h:form id="form">
+            <b:messages id="msgs"/>
+            <b:panelGrid col-spans="12" id="pgParticipante">
+                <b:inputText label="Nome" value="#{participanteController.participante.nome}" placeholder="nome completo" required="true">
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="user" />
+                    </f:facet>
+                </b:inputText>
+
+                <b:inputText id="email" label="Email" value="#{participanteController.participante.usuario.email}"
+                             placeholder="exemplo@email.com" required="true">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="fa-envelope-o" />
+                    </f:facet>
+                </b:inputText>
+
+                <b:inputSecret label="Senha" value="#{participanteController.participante.usuario.senha}"
+                               placeholder="********" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputSecret>
+            </b:panelGrid>
+
+            <b:panelGrid col-spans="12" >
+                <p:outputLabel value="Adicionar uma foto - tamanho máximo (500 kbytes)"/>
+                <p:fileUpload required="false" skinSimple="false" previewWidth="100" style="font-size: 8pt;"
+                              fileUploadListener="#{participanteController.handleFileUpload}" mode="advanced"
+                              label="Anexar uma foto para o perfil" uploadLabel="Inserir" auto="false" 
+                              sizeLimit="500000"  widgetVar="uploader" update="pgFoto"
+                              cancelLabel="excluir"  invalidFileMessage="Arquivo inválido"
+                              invalidSizeMessage="Tamanho do arquivo não permitido!" multiple="false"
+                              allowTypes="/(\.|\/)(gif|jpe?g|png|pdf|odt|txt|csv)$/" /> 
+            </b:panelGrid>
+
+            <b:panel style="margin-top: 1%;" id="pgFoto">
+                <f:facet name="heading">
+                    <i class="fa fa-photo" style="padding-right:20px" />
+                    <b:badge style="margin-left:10px; background-color:#5cb85c" value="foto do perfil"  />
+                </f:facet>
+                <center>
+                    <b:panelGrid col-spans="12">
+                        <p:outputLabel value="tamanho em kbytes #{participanteController.tamanhoArquivo}" style="color: red;"/>
+                    </b:panelGrid>
+                </center>
+            </b:panel>
+
+            <br></br>
+
+            <b:panelGrid col-spans="12">
+                <script src='https://www.google.com/recaptcha/api.js'></script>
+                <div class="g-recaptcha" data-sitekey="6LfPT3QUAAAAAByYOHsswnDviSX3JYUFM6TSNQt3"></div>
+            </b:panelGrid>
+
+            <br></br>
+
+            <b:panelGrid col-spans="12">
+                <b:commandButton value="enviar" action="#{participanteController.salvar()}" look="primary" icon-awesome="fa fa-checked" style="width:100%">
+                    <f:ajax execute="@form" render="form" />
+                </b:commandButton>
+            </b:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

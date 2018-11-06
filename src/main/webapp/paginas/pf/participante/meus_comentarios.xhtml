@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-perfil.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="conteudo-perfil-dir">
+
+        <h3><i class="fa fa-comments-o"></i> Meus comentários</h3>
+
+        <h:form>
+            <p:dataScroller value="#{participanteController.buscaComentarioByParticipante(participanteController.participante.id)}" var="c" chunkSize="3">
+                <b:row>
+                    <b:column col-md="1" style="margin-top: 0%;">
+                        <p:graphicImage value="#{participanteController.arquivoParticipante}" class="foto-perfil-comentario">
+                            <f:param name="id" value="#{c.participante.id}"/>
+                        </p:graphicImage>
+                    </b:column>
+
+                    <b:column col-md="2" style="margin-top: 0%;">
+                        <h:outputText value="#{c.participante.nome}" />
+                    </b:column>
+
+                    <b:column col-md="3" style="margin-top: 0%;">
+                        <h:outputText value="#{c.noticia.titulo}" />
+                        <br></br>
+                        <h:outputText value="#{c.dataRegistro}" style="color: gray;">
+                            <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                        </h:outputText>
+                    </b:column>
+
+                    <b:column col-md="6" style="margin-top: 0%;">
+                        <div class="box-mensagem">
+                            <p> 
+                                <h:outputText value="#{c.descricao}" />
+                            </p>
+                        </div>
+                    </b:column>
+                </b:row>
+                <hr/>
+
+                <f:facet name="loader">
+                    <b:commandButton value="veja mais >>" style="width: 100%;"/>
+                </f:facet>
+            </p:dataScroller>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>gdados - transformando dados em soluções</title>
+        <meta name="author" content="The Author"/>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
+        <meta name="google-site-verification" content="Y0WCOxT6_XheY64iba-6H4IYRXQqw86tTITuFS1DCVg" />
+        <link rel="icon" type="image/png" href="#{request.contextPath}/resources/img/database-512.png" />
+        <link type="text/css" href="#{request.contextPath}/resources/css/font-awesome.css" rel="stylesheet" />
+        <link type="text/css" href="#{request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" />
+        <link type="text/css" href="#{request.contextPath}/resources/css/estilo-img.css" rel="stylesheet" />
+    </h:head>
+
+
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+
+        <b:navBar inverse="true" fixed="top" fluid="false" style="background: blue;border: 0px;" >
+            <h:form>
+                <b:navbarLinks>
+                    <b:navCommandLink icon-awesome="fa-database" value="GDADOS" outcome="/Home" style="color: white;"/>
+                    <b:navCommandLink value="sobre" outcome="/paginas/plb/sobre/sobre" style="color: white;"/>
+                    <b:navCommandLink value="soluções" outcome="/paginas/plb/servico/servico" style="color: white;"/>
+
+                    <b:dropMenu value="mais" icon-awesome="fa-config" rendered="#{seguranca.gerenciarConteudoPermitido}" style="color: white;">
+                        <b:dropMenu value="Usuário" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{usuarioController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{usuarioController.lista()}"/>
+                            <b:navCommandLink value="email" action="#{enviaUsuarioEmailBean.novoEmail()}"/>
+                        </b:dropMenu>
+
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="Participante" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{participanteController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{participanteController.lista()}"/>
+                        </b:dropMenu>
+
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="Grupo" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{grupoController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{grupoController.lista()}"/>
+                        </b:dropMenu>
+
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="Categoria" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{categoriaController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{categoriaController.lista()}"/>
+                        </b:dropMenu>
+
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="SubCategoria" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{subCategoriaController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{subCategoriaController.lista()}"/>
+                        </b:dropMenu>
+
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="Notícia" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{noticiaController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{noticiaController.lista()}"/>
+                        </b:dropMenu>
+
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="DASHBOARD" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="dashbord" action="#{dashboardControlller.dashboard()}" immediate="true"/>
+                        </b:dropMenu>
+                    </b:dropMenu>
+                </b:navbarLinks>
+
+                <b:navbarLinks rendered="#{seguranca.usuarioLogado ne null}">
+                    <b:dropMenu value="#{seguranca.nomeUsuario}" style="color: white;">
+                        <b:navCommandLink value="meu perfil" action="#{participanteController.editarPerfil()}"
+                                          icon-awesome="fa-pencil" rendered="#{seguranca.gerenciarConteudoPerfilPermitido}"/>
+                        <b:navCommandLink icon-awesome="fa-user" value="sair" action="#{loginBean.logout()}"/>
+                    </b:dropMenu>
+                </b:navbarLinks>
+            </h:form>
+
+
+            <h:form styleClass="navbar-form navbar-right" rendered="#{seguranca.usuarioLogado == null}">
+                <div class="form-group">
+                    <b:commandLink outcome="/paginas/plb/participante/cadastro" immediate="true" 
+                                   value="Cadastre-se" look="success" icon-awesome="fa-envelope-o" iconAlign="right" >
+                        <f:ajax listener="#{participanteController.limpaCampoParticipante()}"/>
+                    </b:commandLink>
+                </div> 
+                <div class="form-group">
+                    <b:commandButton action="#{usuarioController.login()}" immediate="true"
+                                     value="Login" look="danger" icon-awesome="fa-user" iconAlign="right" />
+                </div>
+            </h:form>
+        </b:navBar>
+
+
+        <ui:insert name="conteudo"/>
+
+        <b:container>
+            <hr/>
+            <footer>
+                <div style="border: 0px solid gray;">
+                    <div align="left" style="border: 0px solid red;width: 48%;float: left;">
+                        <p> © PROJETO GDADOS 2018</p>
+                    </div>  
+                    <div align="right" style="border: 0px solid red;width: 48%;float: right;">
+                        Todos os direitos reservados a gdados.
+                    </div>
+                </div>
+            </footer>
+        </b:container>
+
+    </h:body>
+</html>
+
