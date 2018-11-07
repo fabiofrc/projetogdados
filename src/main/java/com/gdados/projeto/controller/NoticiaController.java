@@ -11,7 +11,6 @@ import com.gdados.projeto.model.SubCategoria;
 import com.gdados.projeto.util.filter.NoticiaFilter;
 import java.io.ByteArrayInputStream;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,7 @@ import javax.inject.Named;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
 
 @Named
 @ApplicationScoped
@@ -37,9 +37,9 @@ public class NoticiaController implements Serializable {
     @Inject
     private NoticiaFacade noticiaFacade;
     private List<Noticia> noticias;
+
     private List<Noticia> noticiasDsiponivel;
     private List<Noticia> noticiasDestaque;
-    private DataModel<Noticia> dataModelo;
 
     @Inject
     private NoticiaFilter noticiaFilter;
@@ -50,6 +50,8 @@ public class NoticiaController implements Serializable {
     private byte[] arquivo;
     private String paramentroCatagoria;
     private String paramentroTitulo;
+
+    private StreamedContent foto = null;
 
     public void inicializar() {
         System.out.println("iniciando.....");
@@ -64,9 +66,6 @@ public class NoticiaController implements Serializable {
         if (noticia == null) {
             limpaCampo();
         }
-        noticiasDestaque = new ArrayList<>();
-        getNoticiasDestaque();
-
     }
 
     public String salvar() {
@@ -74,12 +73,10 @@ public class NoticiaController implements Serializable {
             if (noticia.getId() == null) {
                 noticiaFacade.save(noticia);
                 limpaCampo();
-                getNoticiasDestaque();
                 return "lista?faces-redirect=true";
             } else {
                 noticiaFacade.update(noticia);
                 limpaCampo();
-                getNoticiasDestaque();
                 return "lista?faces-redirect=true";
             }
         } catch (Exception e) {
@@ -117,6 +114,11 @@ public class NoticiaController implements Serializable {
 
     private List<Noticia> carregaFilter() {
         try {
+            noticiasDsiponivel = new ArrayList<>();
+            noticiasDestaque = new ArrayList<>();
+
+            noticiasDestaque = noticiaFacade.getAllDestaque();
+
             if (noticiaFilter.getTitulo() == null && noticiaFilter.getCategoria() == null) {
                 noticiasDsiponivel = noticiaFacade.getAllDisponivel();
             } else {
@@ -179,17 +181,22 @@ public class NoticiaController implements Serializable {
         noticia.setArquivo(content);
     }
 
-    public StreamedContent getImage1() throws IOException {
+    public String uploadListener(FileUploadEvent evento) {
+        UploadedFile file1 = evento.getFile();
+        this.noticia.setArquivo(file1.getContents());
+        foto = getRetornarFoto();
+        return null;
+    }
+
+    public StreamedContent getRetornarFoto() {
+        return new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
+    }
+
+    public StreamedContent getRetornarFoto2() {
         FacesContext context = FacesContext.getCurrentInstance();
-        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-            // So, we're rendering the HTML. Return a stub StreamedContent so that it will generate right URL.
-            return new DefaultStreamedContent();
-        } else {
-            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
-            String studentId = context.getExternalContext().getRequestParameterMap().get("id");
-            noticia = noticiaFacade.getAllByCodigo(Long.valueOf(studentId));
-            return new DefaultStreamedContent(new ByteArrayInputStream(noticia.getArquivo()));
-        }
+        String studentId = context.getExternalContext().getRequestParameterMap().get("id");
+        noticia = noticiaFacade.getAllByCodigo(Long.valueOf(studentId));
+        return new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
     }
 
     public void addMessageDisponivel() {
@@ -198,7 +205,7 @@ public class NoticiaController implements Serializable {
     }
 
     public void addMessageDestaque() {
-        String summary = noticia.isStatus() ? "Em destaque" : "Sem destaque";
+        String summary = noticia.isDestaque() ? "Em destaque" : "Sem destaque";
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 
@@ -213,7 +220,7 @@ public class NoticiaController implements Serializable {
 
     public String visualisarNoticias() {
         try {
-            getNoticiasDestaque();
+            noticiasDestaque = noticiaFacade.getAllDestaque();
             noticiasDsiponivel = noticiaFacade.getAllDisponivel();
             return "/paginas/plb/noticia/noticia?faces-redirect=true";
         } catch (Exception e) {
@@ -263,12 +270,6 @@ public class NoticiaController implements Serializable {
         this.arquivo = arquivo;
     }
 
-    public DataModel<Noticia> getDataModelo() {
-        getNoticias();
-        dataModelo = new ListDataModel<>(noticias);
-        return dataModelo;
-    }
-
     public int getContador() {
         return noticiaFacade.count();
     }
@@ -314,8 +315,24 @@ public class NoticiaController implements Serializable {
     }
 
     public List<Noticia> getNoticiasDestaque() {
-        noticiasDestaque = noticiaFacade.listaNoticiaByDestaque(true);
         return noticiasDestaque;
+    }
+
+    public StreamedContent getFoto() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+            // So, we're rendering the HTML. Return a stub StreamedContent so that it will generate right URL.
+            return new DefaultStreamedContent();
+        } else {
+            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
+            String studentId = context.getExternalContext().getRequestParameterMap().get("id");
+            noticia = noticiaFacade.getAllByCodigo(Long.valueOf(studentId));
+            return new DefaultStreamedContent(new ByteArrayInputStream(noticia.getArquivo()));
+        }
+    }
+
+    public void setFoto(StreamedContent foto) {
+        this.foto = foto;
     }
 
 }

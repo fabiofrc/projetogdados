@@ -41,10 +41,10 @@ public class NoticiaFacade extends DaoGeneric<Noticia> implements Serializable {
         return null;
     }
 
-    public List<Noticia> listaNoticiaByDestaque(boolean destaque) {
+    public List<Noticia> listaNoticiaByDestaque() {
         try {
-            Query q = em.createQuery("SELECT n FROM Noticia n WHERE n.destaque = :destaque ORDER BY N.dataatuAlizacao DESC");
-            q.setParameter("destaque", destaque);
+            Query q = em.createQuery("SELECT n FROM Noticia n WHERE n.destaque = :destaque ORDER BY n.dataatuAlizacao DESC");
+            q.setParameter("destaque", Boolean.TRUE);
             return q.getResultList();
         } catch (Exception e) {
             System.out.println("erro: " + e.getLocalizedMessage());

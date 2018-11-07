@@ -96,6 +96,13 @@ public class DaoGeneric<T> implements Serializable {
         Query query = getEntityManager().createQuery(querySelect);
         return query.getResultList();
     }
+    
+     @SuppressWarnings("unchecked")
+    public List<T> getAllDestaque() {
+        String querySelect = "SELECT obj FROM " + persistentClass.getSimpleName() + " obj WHERE (obj.destaque) = ('" + true + "') ORDER BY obj.id desc";
+        Query query = getEntityManager().createQuery(querySelect);
+        return query.getResultList();
+    }
 
     @SuppressWarnings("unchecked")
     public List<T> getAllByStatus(Integer field, Integer codigo) {
