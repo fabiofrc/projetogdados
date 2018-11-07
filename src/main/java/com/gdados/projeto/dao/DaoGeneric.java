@@ -92,7 +92,7 @@ public class DaoGeneric<T> implements Serializable {
 //    }
     @SuppressWarnings("unchecked")
     public List<T> getAllDisponivel() {
-        String querySelect = "SELECT obj FROM " + persistentClass.getSimpleName() + " obj WHERE (obj.status) = ('" + true + "') ORDER BY obj.id desc";
+        String querySelect = "SELECT obj FROM " + persistentClass.getSimpleName() + " obj WHERE (obj.status) = ('" + true + "') AND (obj.destaque) = ('" + false + "') ORDER BY obj.id desc";
         Query query = getEntityManager().createQuery(querySelect);
         return query.getResultList();
     }
