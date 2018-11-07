@@ -19,8 +19,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
-import javax.faces.model.DataModel;
-import javax.faces.model.ListDataModel;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -114,13 +112,11 @@ public class NoticiaController implements Serializable {
 
     private List<Noticia> carregaFilter() {
         try {
-            noticiasDsiponivel = new ArrayList<>();
             noticiasDestaque = new ArrayList<>();
-
             noticiasDestaque = noticiaFacade.getAllDestaque();
 
             if (noticiaFilter.getTitulo() == null && noticiaFilter.getCategoria() == null) {
-                noticiasDsiponivel = noticiaFacade.getAllDisponivel();
+                noticiasDsiponivel = noticiaFacade.getAll();
             } else {
                 noticiasDsiponivel = noticiaFacade.buscaNoticiaByFiltro1(noticiaFilter);
             }
@@ -152,7 +148,7 @@ public class NoticiaController implements Serializable {
                 }
             } else {
                 System.err.println("linha 04");
-                noticiasDsiponivel = noticiaFacade.getAllDisponivel();
+                noticiasDsiponivel = noticiaFacade.getAll();
                 getNoticiasDsiponivel();
                 limpaFilter();
                 return "/paginas/plb/noticia/noticia?faces-redirect=true";
@@ -221,7 +217,7 @@ public class NoticiaController implements Serializable {
     public String visualisarNoticias() {
         try {
             noticiasDestaque = noticiaFacade.getAllDestaque();
-            noticiasDsiponivel = noticiaFacade.getAllDisponivel();
+            noticiasDsiponivel = noticiaFacade.getAll();
             return "/paginas/plb/noticia/noticia?faces-redirect=true";
         } catch (Exception e) {
             System.out.println("erro" + e.getLocalizedMessage());

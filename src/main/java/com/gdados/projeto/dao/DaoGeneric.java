@@ -19,6 +19,7 @@ import javax.persistence.criteria.Root;
  * @param <T>
  */
 public class DaoGeneric<T> implements Serializable {
+
     private EntityManager entityManager;
     private final Class<T> persistentClass;
 
@@ -96,10 +97,10 @@ public class DaoGeneric<T> implements Serializable {
         Query query = getEntityManager().createQuery(querySelect);
         return query.getResultList();
     }
-    
-     @SuppressWarnings("unchecked")
+
+    @SuppressWarnings("unchecked")
     public List<T> getAllDestaque() {
-        String querySelect = "SELECT obj FROM " + persistentClass.getSimpleName() + " obj WHERE (obj.destaque) = ('" + true + "') ORDER BY obj.id desc";
+        String querySelect = "SELECT obj FROM " + persistentClass.getSimpleName() + " obj WHERE (obj.status) = ('" + true + "') AND (obj.destaque) = ('" + true + "') ORDER BY obj.id desc";
         Query query = getEntityManager().createQuery(querySelect);
         return query.getResultList();
     }
