@@ -14,6 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
@@ -26,6 +27,7 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
+import sun.awt.AppContext;
 
 @Named
 @ApplicationScoped
@@ -49,7 +51,7 @@ public class NoticiaController implements Serializable {
     private String paramentroCatagoria;
     private String paramentroTitulo;
 
-    private StreamedContent foto = null;
+    private StreamedContent foto;
 
     public void inicializar() {
         System.out.println("iniciando.....");
@@ -184,8 +186,38 @@ public class NoticiaController implements Serializable {
         return null;
     }
 
-    public StreamedContent getRetornarFoto() {
-        return new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
+    public StreamedContent getRetornarFoto(Long id) {
+        try {
+            if (id != null) {
+                noticia = noticiaFacade.getAllByCodigo(1L);
+                return new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        return null;
+    }
+
+    public StreamedContent getImage() {
+        try {
+            FacesContext context = FacesContext.getCurrentInstance();
+            if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+                return new DefaultStreamedContent();
+            } else {
+                // Map abaixo sempre vazio
+                Map<String, String> parameterMap = (Map<String, String>) context.getExternalContext().getRequestParameterMap();
+                String anexoID = parameterMap.get("id");
+                if (anexoID == null) {
+                    return new DefaultStreamedContent();
+                }
+                noticia = noticiaFacade.getAllByCodigo(Long.valueOf(anexoID));
+                StreamedContent retorno = new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
+                return retorno;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        return null;
     }
 
     public StreamedContent getRetornarFoto2() {

@@ -21,6 +21,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
@@ -192,17 +193,26 @@ public class ParticipanteController implements Serializable {
         participante.setArquivo(content);
     }
 
-    public StreamedContent getArquivoParticipante() throws IOException {
-        FacesContext context = FacesContext.getCurrentInstance();
-        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-            // So, we're rendering the HTML. Return a stub StreamedContent so that it will generate right URL.
-            return new DefaultStreamedContent();
-        } else {
-            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
-            String studentId = context.getExternalContext().getRequestParameterMap().get("id");
-            participante = participanteFacade.getAllByCodigo(Long.valueOf(studentId));
-            return new DefaultStreamedContent(new ByteArrayInputStream(participante.getArquivo()));
+     public StreamedContent getImage() {
+        try {
+            FacesContext context = FacesContext.getCurrentInstance();
+            if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+                return new DefaultStreamedContent();
+            } else {
+                // Map abaixo sempre vazio
+                Map<String, String> parameterMap = (Map<String, String>) context.getExternalContext().getRequestParameterMap();
+                String anexoID = parameterMap.get("id");
+                if (anexoID == null) {
+                    return new DefaultStreamedContent();
+                }
+                participante = participanteFacade.getAllByCodigo(Long.valueOf(anexoID));
+                StreamedContent retorno = new DefaultStreamedContent(new ByteArrayInputStream(this.participante.getArquivo()));
+                return retorno;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getLocalizedMessage());
         }
+        return null;
     }
 
     @Produces
