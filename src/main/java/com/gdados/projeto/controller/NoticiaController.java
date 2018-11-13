@@ -27,7 +27,6 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
-import sun.awt.AppContext;
 
 @Named
 @ApplicationScoped
@@ -51,7 +50,6 @@ public class NoticiaController implements Serializable {
     private String paramentroCatagoria;
     private String paramentroTitulo;
 
-    private StreamedContent foto;
 
     public void inicializar() {
         System.out.println("iniciando.....");
@@ -182,22 +180,10 @@ public class NoticiaController implements Serializable {
     public String uploadListener(FileUploadEvent evento) {
         UploadedFile file1 = evento.getFile();
         this.noticia.setArquivo(file1.getContents());
-        foto = getRetornarFoto();
         return null;
     }
 
-    public StreamedContent getRetornarFoto(Long id) {
-        try {
-            if (id != null) {
-                noticia = noticiaFacade.getAllByCodigo(1L);
-                return new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
-            }
-        } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
-        }
-        return null;
-    }
-
+   
     public StreamedContent getImage() {
         try {
             FacesContext context = FacesContext.getCurrentInstance();
@@ -220,12 +206,6 @@ public class NoticiaController implements Serializable {
         return null;
     }
 
-    public StreamedContent getRetornarFoto2() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        String studentId = context.getExternalContext().getRequestParameterMap().get("id");
-        noticia = noticiaFacade.getAllByCodigo(Long.valueOf(studentId));
-        return new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
-    }
 
     public void addMessageDisponivel() {
         String summary = noticia.isStatus() ? "Disponivel" : "Não disponivel";
@@ -344,23 +324,6 @@ public class NoticiaController implements Serializable {
 
     public List<Noticia> getNoticiasDestaque() {
         return noticiasDestaque;
-    }
-
-    public StreamedContent getFoto() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-            // So, we're rendering the HTML. Return a stub StreamedContent so that it will generate right URL.
-            return new DefaultStreamedContent();
-        } else {
-            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
-            String studentId = context.getExternalContext().getRequestParameterMap().get("id");
-            noticia = noticiaFacade.getAllByCodigo(Long.valueOf(studentId));
-            return new DefaultStreamedContent(new ByteArrayInputStream(noticia.getArquivo()));
-        }
-    }
-
-    public void setFoto(StreamedContent foto) {
-        this.foto = foto;
     }
 
 }
