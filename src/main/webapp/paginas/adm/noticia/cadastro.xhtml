@@ -66,12 +66,12 @@
             <b:panelGrid col-spans="12" style="margin-top: 1%;">
                 <h:outputLabel value="Arquivo de destaque da notícia *" for="descricao"/>
                 <p:fileUpload required="false" skinSimple="false" 
-                              fileUploadListener="#{noticiaController.uploadListener}" mode="advanced"
+                              fileUploadListener="#{noticiaController.fileUpload}" mode="advanced"
                               label="Anexar foto" uploadLabel="Inserir" auto="false" previewWidth="300"
                               sizeLimit="16000000"  widgetVar="uploader" update="arquivo"
                               cancelLabel="excluir"  invalidFileMessage="Arquivo inválido"
                               invalidSizeMessage="Tamanho do arquivo não permitido!" multiple="false"
-                              allowTypes="/(\.|\/)(gif|jpe?g|png|pdf|odt|txt|csv)$/" >
+                              allowTypes="/(\.|\/)(gif|jpe?g|png|)$/" >
                 </p:fileUpload> 
             </b:panelGrid>
 
@@ -85,8 +85,7 @@
                 </f:facet>
                 
                 <center>
-                    <p:graphicImage value="#{noticiaController.image}" id="arquivo" width="200" height="150">
-                        <f:param name="id" value="#{noticiaController.noticia.id}"/>
+                    <p:graphicImage value="#{noticiaController.noticia.arquivo}" id="arquivo" width="200" height="150">
                     </p:graphicImage>
                 </center>
             </b:panel>

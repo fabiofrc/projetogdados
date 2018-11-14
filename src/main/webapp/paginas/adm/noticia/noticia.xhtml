@@ -14,8 +14,7 @@
                 <b:row>
                     <p:repeat value="#{noticiaController.noticias}" var="n" >
                         <b:column col-md="4">
-                            <p:graphicImage value="#{noticiaController.image1}" width="100%" height="200">
-                                <f:param name="id" value="#{n.id}"/>
+                            <p:graphicImage value="#{n.arquivo}" width="100%" height="200">
                             </p:graphicImage>
 
                             <h2>#{n.titulo}</h2>

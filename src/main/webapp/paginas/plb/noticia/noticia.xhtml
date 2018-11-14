@@ -15,8 +15,7 @@
             <p:repeat value="#{noticiaController.noticiasDestaque}" var="n" size="2">
                 <h:link outcome="detalhes">
                     <div class="noticia-destaque">
-                        <p:graphicImage value="#{noticiaController.image}" class="image-destque" cache="false" alt="#{n.titulo}">
-                            <f:param name="id" value="#{n.id}"/>
+                        <p:graphicImage value="#{n.arquivo}" class="image-destque" cache="false" alt="#{n.titulo}">
                         </p:graphicImage>
 
                         <h2><b>#{n.titulo}</b></h2>
@@ -29,12 +28,11 @@
 
     <ui:define name="conteudo-noticia-todos">
         <h:form id="form1">
-            <p:dataScroller id="dtNoticias2" value="#{noticiaController.noticiasDsiponivel}" var="n" chunkSize="10">
+            <p:dataScroller id="dtNoticias2" value="#{noticiaController.noticiasDsiponivel}" var="n" chunkSize="3">
                 <h:link outcome="detalhes">
                     <b:row>
                         <b:column col-md="4" style="margin-top: 0%;">
-                            <p:graphicImage value="#{noticiaController.image}" cache="false" class="home-img-noticia" >
-                                <f:param name="id" value="#{n.id}" />
+                            <p:graphicImage value="#{n.arquivo}" cache="false" class="home-img-noticia" >
                             </p:graphicImage>
                         </b:column>
                         <b:column col-md="8" style="margin-top: -1%;">

@@ -9,7 +9,12 @@ import com.gdados.projeto.facade.NoticiaFacade;
 import com.gdados.projeto.model.Noticia;
 import com.gdados.projeto.model.SubCategoria;
 import com.gdados.projeto.util.filter.NoticiaFilter;
+import com.gdados.projeto.util.msg.Msg;
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,6 +28,7 @@ import javax.faces.event.PhaseId;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -171,40 +177,62 @@ public class NoticiaController implements Serializable {
         return this.noticiaFacade.nomeQueContem(titulo);
     }
 
-    public void handleFileUpload(FileUploadEvent event) {
-        byte[] content = event.getFile().getContents();
-        System.out.println(content.length);
-        noticia.setArquivo(content);
-    }
+//    public void handleFileUpload(FileUploadEvent event) {
+//        byte[] content = event.getFile().getContents();
+//        System.out.println(content.length);
+//        noticia.setArquivo(content);
+//    }
 
-    public String uploadListener(FileUploadEvent evento) {
-        UploadedFile file1 = evento.getFile();
-        this.noticia.setArquivo(file1.getContents());
-        return null;
+//    public String uploadListener(FileUploadEvent evento) {
+//        UploadedFile file1 = evento.getFile();
+//        this.noticia.setArquivo(file1.getContents());
+//        return null;
+//    }
+    
+    public void fileUpload(FileUploadEvent event) throws IOException {
+//      String foto = getNumeroRandomico() + ".png";
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ServletContext scontext = (ServletContext) facesContext.getExternalContext().getContext();
+        UploadedFile arq = event.getFile();
+        InputStream in = new BufferedInputStream(arq.getInputstream());
+        String foto = arq.getFileName();
+
+        String pathFile = "/resources/upload/noticia/" + System.currentTimeMillis() + foto;
+        String caminho = scontext.getRealPath(pathFile);
+
+        noticia.setArquivo(pathFile);
+        System.out.println(caminho);
+        try (FileOutputStream fout = new FileOutputStream(caminho)) {
+            while (in.available() != 0) {
+                fout.write(in.read());
+            }
+        }
+        Msg.addMsgInfo("Arquivo inserido com sucesso!  " + foto);
     }
 
    
-    public StreamedContent getImage() {
-        try {
-            FacesContext context = FacesContext.getCurrentInstance();
-            if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-                return new DefaultStreamedContent();
-            } else {
-                // Map abaixo sempre vazio
-                Map<String, String> parameterMap = (Map<String, String>) context.getExternalContext().getRequestParameterMap();
-                String anexoID = parameterMap.get("id");
-                if (anexoID == null) {
-                    return new DefaultStreamedContent();
-                }
-                noticia = noticiaFacade.getAllByCodigo(Long.valueOf(anexoID));
-                StreamedContent retorno = new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
-                return retorno;
-            }
-        } catch (NumberFormatException e) {
-            System.out.println(e.getLocalizedMessage());
-        }
-        return null;
-    }
+//    public StreamedContent getImage() {
+//        try {
+//            FacesContext context = FacesContext.getCurrentInstance();
+//            if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+//                return new DefaultStreamedContent();
+//            } else {
+//                // Map abaixo sempre vazio
+//                Map<String, String> parameterMap = (Map<String, String>) context.getExternalContext().getRequestParameterMap();
+//                String anexoID = parameterMap.get("id");
+//                if (anexoID == null) {
+//                    return new DefaultStreamedContent();
+//                }
+//                noticia = noticiaFacade.getAllByCodigo(Long.valueOf(anexoID));
+//                StreamedContent retorno = new DefaultStreamedContent(new ByteArrayInputStream(this.noticia.getArquivo()));
+//                return retorno;
+//            }
+//        } catch (NumberFormatException e) {
+//            System.out.println(e.getLocalizedMessage());
+//        }
+//        return null;
+//    }
 
 
     public void addMessageDisponivel() {

@@ -56,7 +56,7 @@ public class Noticia implements Serializable {
     private Date dataatuAlizacao;
 
     @Column(name = "arquivo")
-    private byte[] arquivo;
+    private String arquivo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private SubCategoria subCategoria;
@@ -136,13 +136,15 @@ public class Noticia implements Serializable {
         this.subCategoria = subCategoria;
     }
 
-    public byte[] getArquivo() {
+    public String getArquivo() {
         return arquivo;
     }
 
-    public void setArquivo(byte[] arquivo) {
+    public void setArquivo(String arquivo) {
         this.arquivo = arquivo;
     }
+
+  
 
     public List<Comentario> getComentarios() {
         return comentarios;
