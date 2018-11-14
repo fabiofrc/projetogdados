@@ -35,6 +35,10 @@
                         <br></br>
                         <b:commandLink ajax="false" action="#{noticiaController.lista()}" value="Veja mais postagem »" />
                         <br></br>
+
+                        <b:commandLink ajax="false" action="#{arquivoController.listar()}" value="Veja mais arquivos »" />
+                        <br></br>
+
                         <b:commandLink ajax="false" action="#{comentarioController.lista()}" value="Veja mais comentários »" />
                         <br></br>
                         <b:commandLink ajax="false" action="#{comentarioController.comentariosDetalhes()}" value="Comentários em detalhes »" />
@@ -58,6 +62,8 @@
                         <b:commandLink ajax="false" action="#{participanteController.novo()}" value="Novo participante »" />
                         <br></br>
                         <b:commandLink ajax="false" action="#{noticiaController.novo()}" value="Nova postagem »" />
+                        <br></br>
+                        <b:commandLink ajax="false" action="#{arquivoController.novo()}" value="Novo arquivo »" />
 
                         <p:separator/>
                         <b:commandLink ajax="false" action="#{comentarioController.grafico()}" value="Comentários charts »" />

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-cadastro.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="title">
+        <h:outputText value="tranformando dados em soluções"></h:outputText>
+    </ui:define>
+
+
+    <ui:define name="conteudo-cadastro">
+        <h:form id="form">
+            <b:messages/>
+            <h3>Formulário de arquivo</h3>
+            <b:panelGrid columns="1">
+                <h:outputText value="Nome do arquivo" class="red-texto"/>
+                <b:inputText value="#{arquivoController.arquivo.nome}" placeholder="nome" 
+                             required="true" requiredMessage="campo obrigatório"/>
+
+                <h:outputText value="Descrição" class="red-texto"/>
+                <b:inputText value="#{arquivoController.arquivo.descricao}" 
+                             placeholder="descricao" maxlength="255"
+                             required="true" requiredMessage="campo obrigatório"/>
+            </b:panelGrid>
+
+            <b:panelGrid columns="1">
+                <h:outputText value="Arquivo" class="red-texto"/>
+                <p:fileUpload required="false" fileLimit="1" fileLimitMessage="Excedido Limite de arquivos"
+                              fileUploadListener="#{arquivoController.fileUpload}" mode="advanced"
+                              label="Anexar foto" uploadLabel="Inserir" auto="false" 
+                              sizeLimit="16000000"  widgetVar="uploader" 
+                              cancelLabel="excluir"  invalidFileMessage="Arquivo inválido"
+                              invalidSizeMessage="Tamanho da imagem não permitido!" multiple="false"
+                              allowTypes="/(\.|\/)(|pdf|)$/" /> 
+            </b:panelGrid>
+
+            <b:panelGrid columns="1">
+                <b:commandButton value="enviar" action="#{arquivoController.salvar()}" look="primary" icon-awesome="fa fa-checked" style="width:100%">
+                    <f:ajax execute="@form" render="form" />
+                </b:commandButton>
+            </b:panelGrid>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

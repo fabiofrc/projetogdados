@@ -6,7 +6,6 @@
 package teste;
 
 import com.gdados.projeto.facade.ComentarioFacade;
-import com.gdados.projeto.facade.NoticiaFacade;
 import com.gdados.projeto.model.Comentario;
 import java.util.Date;
 import java.util.List;
