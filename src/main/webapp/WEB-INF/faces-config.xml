@@ -4,6 +4,8 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+    <name>primefaces_serenity</name>
+    
     <application> 
         <locale-config>
             <default-locale>pt_BR</default-locale>
@@ -14,7 +16,7 @@
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
     
-    <name>primefaces_serenity</name>
+   
     
     <component>
         <component-type>org.primefaces.component.SerenityMenu</component-type>
