@@ -80,6 +80,14 @@ public class ArquivoController implements Serializable {
         return null;
     }
 
+    public String viewTudo() {
+        try {
+            return "/paginas/adm/arquivo/arquivo?faces-redirect=true";
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public String editar(Long id) {
         try {
             arquivo = arquivoFacade.getAllByCodigo(id);

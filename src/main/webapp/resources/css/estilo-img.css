@@ -131,6 +131,7 @@
         padding: 4px 10px;
         border: 0px solid #A8A8A8;
         /*background-color: #d4d0c8;*/
+        /*background: #1f1f1f;*/
     }
 
     .box-noticia{
@@ -141,6 +142,16 @@
         margin-top: 1%;
         border: 1px solid #A8A8A8;
     }
+    
+    .box-arquivo{
+        width: 24%;
+        height: 300px;
+        float: left;
+        margin-left: 1%;
+        margin-bottom: 4%;
+        border: 1px solid #A8A8A8;
+    }
+    
     .noticia-destaque{
         width: 48%;
         float: left; 

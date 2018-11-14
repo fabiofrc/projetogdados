@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="../../../WEB-INF/template-arquivo.xhtml"
+<ui:composition template="../../../WEB-INF/template-arquivo-detalhes.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
@@ -13,15 +13,24 @@
     </ui:define>
 
     <ui:define name="conteudo-arquivo-menu">
+        <style>
+            .ui-datascroller .ui-datascroller-content {
+                padding: 4px 10px;
+                border: 0px solid #A8A8A8;
+                background: #1f1f1f;
+                color: white;
+            }
+        </style>
+
         <h:form>
-            <h3 style="font-weight: bold;">Artigos</h3>
+            <h3 style="font-weight: bold;color: #d43f3a;">Menu</h3>
             <p:dataScroller value="#{arquivoController.arquivos}" var="n" chunkSize="5">
                 <p:commandLink action="#{arquivoController.view(n.id)}" ajax="false">
-                    <p><i class="fa fa-file-pdf-o" /> - <h:outputText value="#{n.nome}"/></p>
+                    <p style="color: white;"><h:outputText value="#{n.nome}" /></p>
                 </p:commandLink>
 
                 <f:facet name="loader">
-                    <b:commandButton value="ver mais" style="width: 100%;font-weight: bold;"/>
+                    <b:commandButton value="ver mais" style="width: 100%;font-weight: bold;background: #1f1f1f;color:#d43f3a; "/>
                 </f:facet>
             </p:dataScroller>
         </h:form>
@@ -31,9 +40,11 @@
         <p:growl id="message"/>
 
         <h:form id="form">
-            <h3 style="color: black;">PDF</h3>
-            <p:media value="#{arquivoController.arquivo.foto}" width="100%" height="600px">
-            </p:media>
+            <h3 style="font-weight: bold;color: #d43f3a;">Artigos</h3>
+            <p:outputPanel deferred="true">
+                <p:media value="#{arquivoController.arquivo.foto}" width="100%" height="600px" cache="false">
+                </p:media>
+            </p:outputPanel>
         </h:form>
 
     </ui:define>
