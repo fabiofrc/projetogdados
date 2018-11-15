@@ -4,7 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-     >
+      >
 
     <h:head>
         <f:facet name="first">
@@ -17,6 +17,9 @@
         <h:outputScript name="js/nanoscroller.js" library="serenity-layout" />
         <h:outputScript name="js/layout.js" library="serenity-layout" />
         <h:outputScript name="js/ripple.js" library="serenity-layout" />
+
+        <link type="text/css" href="#{request.contextPath}/resources/css/estilo-img.css" rel="stylesheet" />
+
         <ui:insert name="head"/>
     </h:head>
 

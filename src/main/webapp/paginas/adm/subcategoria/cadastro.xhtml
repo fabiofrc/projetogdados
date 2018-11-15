@@ -10,8 +10,9 @@
 
     <ui:define name="conteudo-cadastro">
         <h:form id="form">
-            <b:messages />
+
             <b:panelGrid col-spans="12">
+                <b:messages />
                 <b:inputText label="Nome da subCategoria" value="#{subCategoriaController.subCategoria.nome}" 
                              placeholder="nome da subCategoria" required="true" requiredMessage="informe o nome da subCategoria"/>
 

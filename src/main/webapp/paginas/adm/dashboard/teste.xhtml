@@ -49,7 +49,9 @@
 
     <ui:define name="content">
         <div class="ui-g dashboard">
-            <div class="ui-g-12 ui-lg-4">
+           
+            
+            <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-1">
                     <div class="task-box-header">
                         <i class="material-icons">&#xE5D5;</i>
@@ -66,7 +68,8 @@
                     </div>
                 </div>
             </div>
-            <div class="ui-g-12 ui-lg-4">
+            
+            <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-2">
                     <div class="task-box-header">
                         <i class="material-icons">&#xE5D5;</i>
@@ -83,7 +86,62 @@
                     </div>
                 </div>
             </div>
-            <div class="ui-g-12 ui-lg-4">
+            
+            <div class="ui-g-12 ui-lg-2">
+                <div class="task-box task-box-2">
+                    <div class="task-box-header">
+                        <i class="material-icons">&#xE5D5;</i>
+                    </div>
+                    <div class="task-box-content">
+                        <h3>Sale Reports</h3>
+                        <p>Annual reports per branch</p>
+                    </div>
+                    <div class="task-box-footer">
+                        <span class="task-status">IN PROGRESS</span>
+                        <p:graphicImage name="images/avatar2.png" library="serenity-layout" />
+                        <p:graphicImage name="images/avatar3.png" library="serenity-layout" />
+                        <p:graphicImage name="images/avatar4.png" library="serenity-layout" />
+                    </div>
+                </div>
+            </div>
+          
+            <div class="ui-g-12 ui-lg-2">
+                <div class="task-box task-box-3">
+                    <div class="task-box-header">
+                        <i class="material-icons">&#xE5D5;</i>
+                    </div>
+                    <div class="task-box-content">
+                        <h3>Marketing Meeting</h3>
+                        <p>Marketing meeting to review sales.</p>
+                    </div>
+                    <div class="task-box-footer">
+                        <span class="task-status">ON HOLD</span>
+                        <p:graphicImage name="images/avatar1.png" library="serenity-layout" />
+                        <p:graphicImage name="images/avatar2.png" library="serenity-layout" />
+                        <p:graphicImage name="images/avatar3.png" library="serenity-layout" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ui-g-12 ui-lg-2">
+                <div class="task-box task-box-3">
+                    <div class="task-box-header">
+                        <i class="material-icons">&#xE5D5;</i>
+                    </div>
+                    <div class="task-box-content">
+                        <h3>Marketing Meeting</h3>
+                        <p>Marketing meeting to review sales.</p>
+                    </div>
+                    <div class="task-box-footer">
+                        <span class="task-status">ON HOLD</span>
+                        <p:graphicImage name="images/avatar1.png" library="serenity-layout" />
+                        <p:graphicImage name="images/avatar2.png" library="serenity-layout" />
+                        <p:graphicImage name="images/avatar3.png" library="serenity-layout" />
+                    </div>
+                </div>
+            </div>
+            
+             <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-3">
                     <div class="task-box-header">
                         <i class="material-icons">&#xE5D5;</i>
@@ -107,7 +165,7 @@
                     <div class="overview-box-content">
                         <div class="overview-box-icon"><i class="material-icons">&#xE156;</i></div>
                         <div class="overview-box-title">Messages</div>
-                        <div class="overview-box-count">152</div>
+                        <div class="overview-box-count">#{comentarioController.contador}</div>
                     </div>
                 </div>
             </div>
@@ -116,8 +174,8 @@
                     <div class="overview-box-header"></div>
                     <div class="overview-box-content">
                         <div class="overview-box-icon"><i class="material-icons">&#xE56A;</i></div>
-                        <div class="overview-box-title">Check-Ins</div>
-                        <div class="overview-box-count">532</div>
+                        <div class="overview-box-title">Postagens</div>
+                        <div class="overview-box-count">#{noticiaController.contador}</div>
                     </div>
                 </div>
             </div>
@@ -126,7 +184,7 @@
                     <div class="overview-box-header"></div>
                     <div class="overview-box-content">
                         <div class="overview-box-icon"><i class="material-icons">&#xE24D;</i></div>
-                        <div class="overview-box-title">Files Sycned</div>
+                        <div class="overview-box-title">Arquivos</div>
                         <div class="overview-box-count">28</div>
                     </div>
                 </div>
@@ -136,8 +194,8 @@
                     <div class="overview-box-header"></div>
                     <div class="overview-box-content">
                         <div class="overview-box-icon"><i class="material-icons">&#xE8D3;</i></div>
-                        <div class="overview-box-title">Users Online</div>
-                        <div class="overview-box-count">256</div>
+                        <div class="overview-box-title">Usuário Online</div>
+                        <div class="overview-box-count">#{usuarioController.contador}</div>
                     </div>
                 </div>
             </div>

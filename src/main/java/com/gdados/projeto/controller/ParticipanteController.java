@@ -17,8 +17,11 @@ import com.gdados.projeto.security.MyPasswordEncoder;
 import com.gdados.projeto.security.UsuarioLogado;
 import com.gdados.projeto.security.UsuarioSistema;
 import com.gdados.projeto.util.msg.Msg;
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -28,9 +31,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 @Named
@@ -57,7 +62,7 @@ public class ParticipanteController implements Serializable {
     @Inject
     private ComentarioFacade comentarioFacade;
     private List<Comentario> comentarioByParticpantes;
-    
+
     private double tamanhoArquivo;
 
     public ParticipanteController() {
@@ -186,33 +191,26 @@ public class ParticipanteController implements Serializable {
         return usuarioExistente != null && usuarioExistente.getEmail().equalsIgnoreCase(participante.getUsuario().getEmail());
     }
 
-    public void handleFileUpload(FileUploadEvent event) throws IOException {
-        byte[] content = event.getFile().getContents();
-        tamanhoArquivo = content.length;
-        System.out.println(tamanhoArquivo);
-        participante.setArquivo(content);
-    }
+    public void fileUpload(FileUploadEvent event) throws IOException {
+//      String foto = getNumeroRandomico() + ".png";
 
-     public StreamedContent getImage() {
-        try {
-            FacesContext context = FacesContext.getCurrentInstance();
-            if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-                return new DefaultStreamedContent();
-            } else {
-                // Map abaixo sempre vazio
-                Map<String, String> parameterMap = (Map<String, String>) context.getExternalContext().getRequestParameterMap();
-                String anexoID = parameterMap.get("id");
-                if (anexoID == null) {
-                    return new DefaultStreamedContent();
-                }
-                participante = participanteFacade.getAllByCodigo(Long.valueOf(anexoID));
-                StreamedContent retorno = new DefaultStreamedContent(new ByteArrayInputStream(this.participante.getArquivo()));
-                return retorno;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ServletContext scontext = (ServletContext) facesContext.getExternalContext().getContext();
+        UploadedFile arq = event.getFile();
+        InputStream in = new BufferedInputStream(arq.getInputstream());
+        String foto = arq.getFileName();
+
+        String pathFile = "/resources/upload/participante/" + System.currentTimeMillis() + foto;
+        String caminho = scontext.getRealPath(pathFile);
+
+        participante.setArquivo(pathFile);
+        System.out.println(caminho);
+        try (FileOutputStream fout = new FileOutputStream(caminho)) {
+            while (in.available() != 0) {
+                fout.write(in.read());
             }
-        } catch (NumberFormatException e) {
-            System.out.println(e.getLocalizedMessage());
         }
-        return null;
+        Msg.addMsgInfo("Arquivo inserido com sucesso!  " + foto);
     }
 
     @Produces
@@ -250,7 +248,7 @@ public class ParticipanteController implements Serializable {
         participante.getUsuario().setSenha(null);
         return "/paginas/pf/participante/cadastro_senha?faces-redirect=true";
     }
-    
+
     public String visualisarComentario() {
         return "/paginas/pf/participante/meus_comentarios?faces-redirect=true";
     }
@@ -262,7 +260,7 @@ public class ParticipanteController implements Serializable {
     public void limpaCampoParticipante() {
         participante = new Participante();
     }
-    
+
     private void limpaCampo() {
         participante = new Participante();
     }

@@ -6,10 +6,11 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:pa="http://primefaces.org/serenity">
 
+
     <div class="layout-topbar">
         <a href="dashboard.xhtml" class="topbar-logo">
             <p:graphicImage name="images/logo-slim.png" library="serenity-layout" />
-            <span class="app-name">SERENITY</span>
+            <span class="app-name">GDADOS</span>
         </a>
 
         <p:graphicImage name="images/logo-slim.png" library="serenity-layout" styleClass="mobile-logo" />
@@ -26,17 +27,18 @@
             <div class="sidebar-logo">
                 <a href="dashboard.xhtml">
                     <p:graphicImage name="images/logo-slim.png" library="serenity-layout" />
-                    <span class="app-name">SERENITY</span>
+                    <span class="app-name">GDADOS</span>
                 </a>
                 <a href="#" class="sidebar-anchor" title="Toggle Menu"></a>
-            </div>            
+            </div>  
+
             <ul class="topbar-menu animated">
                 <li class="profile-item">
                     <a href="#">       
                         <span class="profile-image-wrapper">
-                            <p:graphicImage name="images/avatar.png" library="serenity-layout" />
+                            <p:graphicImage value="#{seguranca.usuarioLogado.usuario.participante.arquivo}" />
                         </span>                     
-                        <span class="topbar-item-name profile-name">Wendy Lorina</span>
+                        <span class="topbar-item-name profile-name">#{seguranca.nomeUsuario}</span>
                     </a>
 
                     <ul class="animated">
@@ -59,7 +61,7 @@
                             </a>
                         </li>
                         <li role="menuitem">
-                            <a href="#">
+                            <a href="#{loginBean.logout()}">
                                 <i class="material-icons">&#xE8AC;</i>
                                 <span>Logout</span>
                             </a>
@@ -73,10 +75,10 @@
                     </a>
                     <ul class="animated">
                         <li role="menuitem">
-                            <a href="#">
+                            <h:link outcome="/paginas/adm/dashboard/dashboard?faces-redirect=true">
                                 <i class="material-icons">&#xE40A;</i>
-                                <span>Change Theme</span>
-                            </a>
+                                <span>DASHBOARD</span>
+                            </h:link>
                         </li>
                         <li role="menuitem">
                             <a href="#">
@@ -180,6 +182,7 @@
                     </h:form>
                 </li>
             </ul>
+
         </div>
     </div>
 

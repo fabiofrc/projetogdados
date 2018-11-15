@@ -11,11 +11,12 @@
     <ui:define name="conteudo-cadastro">
         <h:form id="form">
             <b:panelGrid col-spans="12">
+                <b:messages/>
                 <b:inputText label="Nome da categoria" value="#{categoriaController.categoria.nome}"
                              placeholder="nome da categoria" required="true"/>
                 <h:outputLabel value="Descrição detalhada *" for="descricao"/>
-                <p:editor id="descricao" value="#{categoriaController.categoria.descricao}" height="300" 
-                          required="true" requiredMessage="informe a descrição" />
+                <p:editor id="descricao" value="#{categoriaController.categoria.descricao}" 
+                          required="true" requiredMessage="informe a descrição"  />
             </b:panelGrid>
 
             <b:panelGrid col-spans="12" style="margin-top: 1%;">

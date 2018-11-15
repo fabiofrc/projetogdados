@@ -13,11 +13,11 @@
         <h:form>
             <p:dataTable id="tbUsuario" value="#{usuarioController.usuarios}" var="g"
                          paginator="true" reflow="true">
-               
+
                 <p:column headerText="id" >
                     <h:outputText value="#{g.id}"/>
                 </p:column>
-                
+
                 <p:column headerText="email" filterBy="#{g.email}">
                     <h:outputText value="#{g.email}"/>
                 </p:column>

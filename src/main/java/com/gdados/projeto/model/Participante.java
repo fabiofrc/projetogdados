@@ -28,7 +28,7 @@ public class Participante implements Serializable {
     private String nome;
     private String cpf;
     private TipoPessoa tipo;
-    private byte[] arquivo;
+    private String arquivo;
 
     private Usuario usuario = new Usuario();
     private List<Comentario> comentarios;
@@ -81,14 +81,13 @@ public class Participante implements Serializable {
         this.usuario = usuario;
     }
 
-    public byte[] getArquivo() {
+    public String getArquivo() {
         return arquivo;
     }
 
-    public void setArquivo(byte[] arquivo) {
+    public void setArquivo(String arquivo) {
         this.arquivo = arquivo;
-    }
-    
+    } 
 
     @Override
     public int hashCode() {

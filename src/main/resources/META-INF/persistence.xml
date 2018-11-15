@@ -9,6 +9,7 @@
     <class>com.gdados.projeto.model.SubCategoria</class>
     <class>com.gdados.projeto.model.Usuario</class>
     <class>com.gdados.projeto.model.Comentario</class>
+    <class>com.gdados.projeto.model.Arquivo</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gdados_db"/>

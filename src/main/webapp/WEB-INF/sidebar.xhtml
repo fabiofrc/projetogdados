@@ -10,7 +10,7 @@
         <div class="sidebar-logo">
             <a href="dashboard.xhtml">
                 <p:graphicImage name="images/logo-slim.png" library="serenity-layout" />
-                <span class="app-name">SERENITY</span>
+                <span class="app-name">GDADOS</span>
             </a>
             <a href="#" class="sidebar-anchor" title="Toggle Menu"></a>
         </div>
@@ -108,29 +108,78 @@
                                 <p:menuitem id="sr_404" value="404 Page" icon="&#xE001;" outcome="/notfound" />
                                 <p:menuitem id="sr_access" value="Access Denied Page" icon="&#xE32A;" outcome="/access" />
                             </p:submenu>
-                            <p:submenu id="sr_hierarchy" label="Hierarchy" icon="&#xE5D2;">
-                                <p:submenu id="sr_sm1" label="Submenu 1" icon="&#xE8D2;">
-                                    <p:submenu id="sr_sm11" label="Submenu 1.1" icon="&#xE8D2;">
-                                        <p:menuitem id="sr_lnk111" value="Link 1.1.1" icon="&#xE8D2;" url="#" />
-                                        <p:menuitem id="sr_lnk112" value="Link 1.1.2" icon="&#xE8D2;" url="#" />
-                                        <p:menuitem id="sr_lnk113" value="Link 1.1.3" icon="&#xE8D2;" url="#" />
+
+                            <p:submenu id="sr_hierarchy" label="ADMINISTRAÇÃO" icon="&#xE5D2;">
+                                <p:submenu label="Cadastro" icon="&#xE8D2;" rendered="#{seguranca.gerenciarConteudoPermitido}">
+                                    <p:submenu label="Arquivo" icon="&#xE8D2;">
+                                        <p:menuitem value="novo" icon="&#xE8D2;" ajax="false" action="#{arquivoController.novo()}"/>
                                     </p:submenu>
-                                    <p:submenu id="sr_sm12" label="Submenu 1.2" icon="&#xE8D2;">
-                                        <p:menuitem id="sr_lnk121" value="Link 1.2.1" icon="&#xE8D2;" url="#" />
+
+                                    <p:submenu label="Usuário" icon="&#xE8D2;">
+                                        <p:menuitem value="novo" icon="&#xE8D2;" ajax="false" action="#{usuarioController.novo()}"/>
+                                    </p:submenu>
+
+                                    <p:submenu label="Grupo" icon="&#xE8D2;">
+                                        <p:menuitem value="novo" icon="&#xE8D2;" ajax="false" action="#{grupoController.novo()}" />
+                                    </p:submenu>
+
+
+                                    <p:submenu label="Categoria" icon="&#xE8D2;">
+                                        <p:menuitem value="novo" icon="&#xE8D2;" ajax="false" action="#{categoriaController.novo()}" />
+                                    </p:submenu>
+
+                                    <p:submenu label="SubCategoria" icon="&#xE8D2;">
+                                        <p:menuitem value="novo" icon="&#xE8D2;" ajax="false" action="#{subCategoriaController.novo()}"/>
+                                    </p:submenu>
+
+                                    <p:submenu label="Notícias" icon="&#xE8D2;">
+                                        <p:menuitem value="novo" icon="&#xE8D2;" ajax="false" action="#{noticiaController.novo()}"/>
+                                    </p:submenu>
+
+                                    <p:submenu label="Participante" icon="&#xE8D2;">
+                                        <p:menuitem value="novo" icon="&#xE8D2;" ajax="false" action="#{participanteController.novo()}" />
                                     </p:submenu>
                                 </p:submenu>
-                                <p:submenu id="sr_sm2" label="Submenu 2" icon="&#xE8D2;">
-                                    <p:submenu id="sr_sm21" label="Submenu 2.1" icon="&#xE8D2;">
-                                        <p:menuitem id="sr_lnk211" value="Link 2.1.1" icon="&#xE8D2;" url="#" />
-                                        <p:menuitem id="sr_lnk212" value="Link 2.1.2" icon="&#xE8D2;" url="#" />
+
+                                <p:submenu label="Listagem" icon="&#xE8D2;" rendered="#{seguranca.gerenciarConteudoPermitido}">
+                                    <p:submenu label="Arquivo" icon="&#xE8D2;">
+                                        <p:menuitem value="lista" icon="&#xE8D2;" ajax="false" action="#{arquivoController.listar()}" />
+                                        <p:menuitem value="visuaalizar" icon="&#xE8D2;" ajax="false" action="#{arquivoController.viewTudo()}"/>
                                     </p:submenu>
-                                    <p:submenu id="sr_sm22" label="Submenu 2.2" icon="&#xE8D2;">
-                                        <p:menuitem id="sr_lnk221" value="Link 2.2.1" icon="&#xE8D2;" url="#" />
+
+                                    <p:submenu label="Usuário" icon="&#xE8D2;">
+                                        <p:menuitem value="lista" icon="&#xE8D2;" ajax="false" action="#{usuarioController.lista()}" />
+                                    </p:submenu>
+
+                                    <p:submenu label="Grupo" icon="&#xE8D2;">
+                                        <p:menuitem value="lista" icon="&#xE8D2;" ajax="false" action="#{grupoController.lista()}"/>
+                                    </p:submenu>
+
+
+                                    <p:submenu label="Categoria" icon="&#xE8D2;">
+                                        <p:menuitem value="lista" icon="&#xE8D2;" action="#{categoriaController.lista()}" ajax="false" />
+                                    </p:submenu>
+
+                                    <p:submenu label="SubCategoria" icon="&#xE8D2;">
+                                        <p:menuitem value="lista" icon="&#xE8D2;" ajax="false" action="#{subCategoriaController.lista()}" />
+                                    </p:submenu>
+
+                                    <p:submenu label="Notícias" icon="&#xE8D2;">
+                                        <p:menuitem value="lista" icon="&#xE8D2;" ajax="false" action="#{noticiaController.lista()}"/>
+                                    </p:submenu>
+
+                                    <p:submenu label="Participante" icon="&#xE8D2;">
+                                        <p:menuitem value="lista" icon="&#xE8D2;" ajax="false" action="#{participanteController.lista()}" />
+                                    </p:submenu>
+
+                                    <p:submenu label="Comentário" icon="&#xE8D2;">
+                                        <p:menuitem value="lista" icon="&#xE8D2;" ajax="false" action="#{comentarioController.lista()}" />
                                     </p:submenu>
                                 </p:submenu>
                             </p:submenu>
-                            <p:menuitem id="sr_utils" value="Utils" icon="&#xE869;" outcome="/utils" />
-                            <p:menuitem id="sr_doc" value="Docs" icon="&#xE880;" outcome="/docs"/>
+                            <p:menuitem value="Comentarios charts" icon="&#xE869;" ajax="false" action="#{comentarioController.grafico()}"/>
+                            <p:menuitem value="Comentarios timeline" icon="&#xE869;" ajax="false" action="#{comentarioController.timeline()}"/>
+                            <p:menuitem value="Comentarios exportar" icon="&#xE869;" ajax="false" action="#{comentarioController.exportarComentario()}"/>
                         </pm:menu>
                     </h:form>
                 </div>
