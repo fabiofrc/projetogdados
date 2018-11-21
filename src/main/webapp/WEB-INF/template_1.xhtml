@@ -19,6 +19,7 @@
         <h:outputScript name="js/ripple.js" library="serenity-layout" />
 
         <link type="text/css" href="#{request.contextPath}/resources/css/estilo-img.css" rel="stylesheet" />
+        <link rel="icon" type="image/png" href="#{request.contextPath}/resources/img/database-512.png" />
 
         <ui:insert name="head"/>
     </h:head>
@@ -32,7 +33,7 @@
 
                 <div class="layout-breadcrumb">
                     <ul>
-                        <li><p:link outcome="/dashboard"><i class="material-icons">&#xE88A;</i></p:link></li>
+                        <li><p:link outcome="/paginas/adm/dashboard/dashboard"><i class="material-icons">&#xE88A;</i></p:link></li>
                         <li>/</li>
                         <ui:insert name="breadcrumb" />
                     </ul>

@@ -20,7 +20,8 @@
                 <div class="layout-menu-container">
                     <h:form id="menuform">
                         <pm:menu>
-                            <p:menuitem id="sr_dashboard" value="Dashboard" icon="&#xE871;" />
+                            <p:menuitem id="sr_dashboard" value="Dashboard" icon="&#xE871;" action="#{dashboardControlller.dashboard()}" ajax="false"/>
+                            <p:menuitem id="sr_home" value="Home" icon="&#xE871;" action="#{usuarioController.home()}" ajax="false"/>
                             <p:submenu id="sr_customization1" label="Menu Modes" icon="&#xE8B8;">
                                 <p:menuitem id="menu1" value="Vertical Menu" icon="&#xE233;" actionListener="#{guestPreferences.setHorizontal(false)}" ajax="false"/>
                                 <p:menuitem id="menu2" value="Horizontal Menu" icon="&#xE22C;" actionListener="#{guestPreferences.setHorizontal(true)}" ajax="false"/>
@@ -103,7 +104,7 @@
                             <p:submenu id="sr_default" label="Template Pages" icon="&#xE884;">
                                 <p:menuitem id="sr_db_landing" value="Landing" icon="&#xE904;" outcome="/landing"/>
                                 <p:menuitem id="sr_empty" value="Empty Page" icon="&#xE88B;" outcome="/empty" />
-                                <p:menuitem id="sr_login" value="Login Page" icon="&#xE8E8;" outcome="/login" />
+                              
                                 <p:menuitem id="sr_error" value="Error Page" icon="&#xE000;" outcome="/error" />
                                 <p:menuitem id="sr_404" value="404 Page" icon="&#xE001;" outcome="/notfound" />
                                 <p:menuitem id="sr_access" value="Access Denied Page" icon="&#xE32A;" outcome="/access" />

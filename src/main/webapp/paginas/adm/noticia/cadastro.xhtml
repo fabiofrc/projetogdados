@@ -12,7 +12,7 @@
         <h3>operação >> #{noticiaController.editando ? 'edição de notícia' : 'Nova notícia'}</h3>
 
         <h:form id="form" enctype="multipart/form-data">
-            <b:growl id="msgs" />
+            <b:messages id="msgs" />
             <b:panelGrid col-spans="12">
                 <b:inputText label="Título" value="#{noticiaController.noticia.titulo}" 
                              placeholder="título da postagem"

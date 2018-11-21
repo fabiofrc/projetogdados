@@ -66,6 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .deleteCookies("JSESSIONID")
                 .and()
+                .rememberMe().key("uniqueAndSecret")
+                .and()
                 .exceptionHandling()
                 .accessDeniedPage("/AcessoNegado.xhtml")
                 .authenticationEntryPoint(jsfLoginEntry)

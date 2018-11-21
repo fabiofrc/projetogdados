@@ -49,8 +49,8 @@
 
     <ui:define name="content">
         <div class="ui-g dashboard">
-           
-            
+
+
             <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-1">
                     <div class="task-box-header">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-2">
                     <div class="task-box-header">
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-2">
                     <div class="task-box-header">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </div>
-          
+
             <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-3">
                     <div class="task-box-header">
@@ -122,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-3">
                     <div class="task-box-header">
@@ -140,8 +140,8 @@
                     </div>
                 </div>
             </div>
-            
-             <div class="ui-g-12 ui-lg-2">
+
+            <div class="ui-g-12 ui-lg-2">
                 <div class="task-box task-box-3">
                     <div class="task-box-header">
                         <i class="material-icons">&#xE5D5;</i>
@@ -661,6 +661,35 @@
                         <p:graphicImage name="images/dashboard/map.jpg" library="serenity-layout" />
                     </p:panel>
                 </div>
+            </div>
+
+
+
+            <div class="ui-g-12 schedule">
+                <h:form>
+                    <p:dataGrid var="n" value="#{noticiaController.noticias}" columns="4" layout="grid"
+                                rows="8" paginator="true" 
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="6,12,16">
+
+                        <f:facet name="header">
+                            Notícias
+                        </f:facet>
+
+                        <p:panel header="#{n.id}" style="text-align:center;height: 250px;">
+                            <h:panelGrid columns="1" style="width:100%">
+
+                                <p:graphicImage value="#{n.arquivo}" class="foto-perfil">
+                                </p:graphicImage>
+
+                                <h:outputText value="#{n.titulo}" />
+
+                                <p:commandButton ajax="false" action="#{noticiaController.view(n.id)}" icon="ui-icon-search"/>
+                            </h:panelGrid>
+                        </p:panel>
+
+                    </p:dataGrid>
+                </h:form>
             </div>
 
             <div class="ui-g-12 schedule">
