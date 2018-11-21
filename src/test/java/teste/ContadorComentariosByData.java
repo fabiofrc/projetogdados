@@ -20,7 +20,7 @@ public class ContadorComentariosByData {
         ComentarioFacade cf = new ComentarioFacade();
         Comentario c = new Comentario();
 
-        Date d = new Date(2018, 10, 30);
+        Date d = new Date();
 
         long cont = cf.contaComentarioByData(d);
         System.out.println("Quantidade" + cont);
