@@ -65,15 +65,24 @@
 
             <b:panelGrid col-spans="12" style="margin-top: 1%;">
                 <h:outputLabel value="Arquivo de destaque da notícia *" for="descricao"/>
-                <p:fileUpload required="false" skinSimple="false" 
-                              fileUploadListener="#{noticiaController.fileUpload}" mode="advanced"
-                              label="Anexar foto" uploadLabel="Inserir" auto="false" previewWidth="300"
-                              sizeLimit="16000000"  widgetVar="uploader" update="arquivo"
-                              cancelLabel="excluir"  invalidFileMessage="Arquivo inválido"
-                              invalidSizeMessage="Tamanho do arquivo não permitido!" multiple="false"
-                              allowTypes="/(\.|\/)(gif|jpe?g|png|)$/" >
-                </p:fileUpload> 
+                <p:fileUpload fileUploadListener="#{noticiaController.fileUpload}"
+                              previewWidth="10" auto="false" label="Escolher a foto"
+                              update="fotoPanelGroup" skinSimple="true" mode="advanced"
+                              allowTypes="/(\.|\/)(gif|jpe?g|jpg|png)$/"
+                              invalidFileMessage="São permitidas somente imagens (gif, jpeg, jpg e png)"
+                              fileLimit="50" dragDropSupport="true" sizeLimit="1024000"
+                              invalidSizeMessage="O tamanho máximo permitido é de 100KB."
+                              fileLimitMessage="Só é possível escolher apenas 1 foto."
+                              uploadLabel="Enviar" cancelLabel="Cancelar">
+                </p:fileUpload>
             </b:panelGrid>
+
+            <h:panelGrid id="fotoPanelGroup">
+                <p:graphicImage
+                    value="#{noticiaController.noticia.arquivo}"
+                    rendered="#{noticiaController.noticia.arquivo ne null}"
+                    width="200px" id="foto" />
+            </h:panelGrid>
 
             <br></br>
 
@@ -83,7 +92,7 @@
                     <h:outputText value="arquivo anexado" />
                     <b:badge style="margin-left:10px; background-color:#5cb85c" value="imagem"  />
                 </f:facet>
-                
+
                 <center>
                     <p:graphicImage value="#{noticiaController.noticia.arquivo}" id="arquivo" width="200" height="150">
                     </p:graphicImage>

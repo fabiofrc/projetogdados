@@ -39,7 +39,7 @@ public class LoginBean implements Serializable {
     }
 
     public void login() throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.xhtml?faces-redirect=true");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/login.xhtml?faces-redirect=true");
         dispatcher.forward(request, response);
         facesContext.responseComplete();
     }

@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         JsfLoginUrlAuthenticationEntryPoint jsfLoginEntry = new JsfLoginUrlAuthenticationEntryPoint();
-        jsfLoginEntry.setLoginFormUrl("/Login.xhtml");
+        jsfLoginEntry.setLoginFormUrl("/login.xhtml");
         jsfLoginEntry.setRedirectStrategy(new JsfRedirectStrategy());
 
         JsfAccessDeniedHandler jsfDeniedEntry = new JsfAccessDeniedHandler();
@@ -55,11 +55,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/Home.xhtml", "/teste.xhtml", "/paginas/plb/**", "/Erro.xhtml", "/javax.faces.resources/**").permitAll()
                 .antMatchers("/paginas/adm/**").hasRole("ADMINISTRADOR")
                 .antMatchers("/paginas/pf/**", "/paginas/pf/participante/cadastro_perfil").hasRole("PARTICIPANTE")
-                .antMatchers("/Login.xhtml").anonymous()
+                .antMatchers("/login.xhtml").anonymous()
                 .and()
                 .formLogin()
-                .loginPage("/Login.xhtml")
-                .failureUrl("/Login.xhtml?invalid=true").and().rememberMe()
+                .loginPage("/login.xhtml")
+                .failureUrl("/login.xhtml?invalid=true").and().rememberMe()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/Login.xhtml")

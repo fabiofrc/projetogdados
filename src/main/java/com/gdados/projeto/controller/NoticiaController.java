@@ -10,6 +10,7 @@ import com.gdados.projeto.model.Noticia;
 import com.gdados.projeto.model.SubCategoria;
 import com.gdados.projeto.util.filter.NoticiaFilter;
 import com.gdados.projeto.util.msg.Msg;
+import com.gdados.projeto.util.upload.FotoService;
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -46,11 +47,13 @@ public class NoticiaController implements Serializable {
     @Inject
     private SubCategoria categoria;
 
+    @Inject
+    private FotoService fotoService;
+
     private String file;
     private byte[] arquivo;
     private String paramentroCatagoria;
     private String paramentroTitulo;
-
 
     public void inicializar() {
         System.out.println("iniciando.....");
@@ -177,13 +180,11 @@ public class NoticiaController implements Serializable {
 //        System.out.println(content.length);
 //        noticia.setArquivo(content);
 //    }
-
 //    public String uploadListener(FileUploadEvent evento) {
 //        UploadedFile file1 = evento.getFile();
 //        this.noticia.setArquivo(file1.getContents());
 //        return null;
 //    }
-    
     public void fileUpload(FileUploadEvent event) throws IOException {
 //      String foto = getNumeroRandomico() + ".png";
 
@@ -206,7 +207,6 @@ public class NoticiaController implements Serializable {
         Msg.addMsgInfo("Arquivo inserido com sucesso!  " + foto);
     }
 
-   
 //    public StreamedContent getImage() {
 //        try {
 //            FacesContext context = FacesContext.getCurrentInstance();
@@ -228,7 +228,27 @@ public class NoticiaController implements Serializable {
 //        }
 //        return null;
 //    }
+    public void upload(FileUploadEvent event) {
+        UploadedFile uploadedFile = event.getFile();
 
+        try {
+            fotoService.deletar(noticia.getArquivo());
+            String foto = fotoService.salvarFotoTemp(uploadedFile.getFileName(), event.getFile().getContents());
+            noticia.setArquivo(foto);
+        } catch (IOException e) {
+            Msg.addErrorMessage(e.getMessage());
+        }
+    }
+
+    public void removerFoto() {
+        try {
+            fotoService.deletarTemp(noticia.getArquivo());
+        } catch (IOException e) {
+            Msg.addErrorMessage(e.getMessage());
+        }
+
+        noticia.setArquivo(null);
+    }
 
     public void addMessageDisponivel() {
         String summary = noticia.isStatus() ? "Disponivel" : "Não disponivel";
