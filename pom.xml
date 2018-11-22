@@ -292,23 +292,6 @@
             <version>2.4.13</version>
         </dependency>
         
-        <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4</version>
-            <scope>compile</scope>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/simple-email/simple-email -->
-        <dependency>
-            <groupId>simple-email</groupId>
-            <artifactId>simple-email</artifactId>
-            <version>1.0.3</version>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
 
 

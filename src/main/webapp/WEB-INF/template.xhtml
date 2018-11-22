@@ -15,10 +15,6 @@
         <link rel="icon" type="image/png" href="#{request.contextPath}/resources/img/database-512.png" />
 
         <link type="text/css" href="#{request.contextPath}/resources/css/estilo-img.css" rel="stylesheet" />
-        
-        <h:outputScript name="js/nanoscroller.js" library="serenity-layout" />
-        <h:outputScript name="js/layout.js" library="serenity-layout" />
-        <h:outputScript name="js/ripple.js" library="serenity-layout" />
     </h:head>
 
 
@@ -100,7 +96,7 @@
                     </b:commandLink>
                 </div> 
                 <div class="form-group">
-                    <b:commandButton action="#{usuarioController.login()}" immediate="true"
+                    <b:commandLink outcome="/Login" immediate="true"
                                      value="Login" look="danger" icon-awesome="fa-user" iconAlign="right" />
                 </div>
             </h:form>
