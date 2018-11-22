@@ -70,8 +70,8 @@
                               update="fotoPanelGroup" skinSimple="true" mode="advanced"
                               allowTypes="/(\.|\/)(gif|jpe?g|jpg|png)$/"
                               invalidFileMessage="São permitidas somente imagens (gif, jpeg, jpg e png)"
-                              fileLimit="50" dragDropSupport="true" sizeLimit="1024000"
-                              invalidSizeMessage="O tamanho máximo permitido é de 100KB."
+                              fileLimit="50" dragDropSupport="true" sizeLimit="16000000"
+                              invalidSizeMessage="O tamanho máximo permitido é de 4MB."
                               fileLimitMessage="Só é possível escolher apenas 1 foto."
                               uploadLabel="Enviar" cancelLabel="Cancelar">
                 </p:fileUpload>
@@ -85,19 +85,6 @@
             </h:panelGrid>
 
             <br></br>
-
-            <b:panel>
-                <f:facet name="heading">
-                    <i class="fa fa-user" style="padding-right:20px" />
-                    <h:outputText value="arquivo anexado" />
-                    <b:badge style="margin-left:10px; background-color:#5cb85c" value="imagem"  />
-                </f:facet>
-
-                <center>
-                    <p:graphicImage value="#{noticiaController.noticia.arquivo}" id="arquivo" width="200" height="150">
-                    </p:graphicImage>
-                </center>
-            </b:panel>
 
             <b:panelGrid col-spans="12" style="margin-top: 1%;">
                 <b:commandButton value="enviar" action="#{noticiaController.salvar()}" look="primary" icon-awesome="fa fa-checked" style="width:100%">

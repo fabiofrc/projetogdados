@@ -135,7 +135,7 @@ public class ComentarioController implements Serializable {
 //                return "/Login?faces-redirect=true";
 //            }
         } catch (Exception e) {
-            return "/Login?faces-redirect=true";
+            return "/login?faces-redirect=true";
         }
     }
 

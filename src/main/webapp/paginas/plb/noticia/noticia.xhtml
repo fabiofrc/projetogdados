@@ -18,7 +18,7 @@
                         <p:graphicImage value="#{n.arquivo}" class="image-destque" cache="false" alt="#{n.titulo}">
                         </p:graphicImage>
 
-                        <h2><b>#{n.titulo}</b></h2>
+                        <h2 style="color: white;font-weight: bold;"><b>#{n.titulo}</b></h2>
                     </div>
                     <f:param name="id" value="#{n.id}" />
                 </h:link>
@@ -36,7 +36,7 @@
                             </p:graphicImage>
                         </b:column>
                         <b:column col-md="8" style="margin-top: -1%;">
-                            <h2><b>#{n.titulo}</b></h2>
+                            <h2 style="color: black;"><b>#{n.titulo}</b></h2>
                             <p>#{n.subTitulo}</p>
                             <p style="color: gray;font-size: 10pt;">#{n.subCategoria.nome}</p>
                             <h:outputText value="#{n.dataatuAlizacao}" style="font-size: 8pt;">
