@@ -91,5 +91,4 @@ public class Arquivo implements Serializable {
     public void setCaminho(String caminho) {
         this.caminho = caminho;
     }
-
 }
