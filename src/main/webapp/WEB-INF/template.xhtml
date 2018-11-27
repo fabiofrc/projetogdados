@@ -32,9 +32,7 @@
             <h:form>
                 <b:navbarLinks>
                     <b:navCommandLink icon-awesome="fa-database" value="GDADOS" outcome="/Home" style="color: white;"/>
-                    <b:navCommandLink value="sobre" outcome="/paginas/plb/sobre/sobre" style="color: white;"/>
-                    <b:navCommandLink value="soluções" outcome="/paginas/plb/servico/servico" style="color: white;"/>
-
+                 
                     <b:dropMenu value="mais" icon-awesome="fa-config" rendered="#{seguranca.gerenciarConteudoPermitido}" style="color: white;">
                         <b:dropMenu value="Usuário" iconAwesome="plus" iconAlign="right">
                             <b:navCommandLink value="novo" action="#{usuarioController.novo()}"/>
@@ -66,6 +64,12 @@
                             <b:navCommandLink value="lista" action="#{subCategoriaController.lista()}"/>
                         </b:dropMenu>
 
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="Projeto" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{projetoController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{projetoController.lista()}"/>
+                        </b:dropMenu>
+                        
                         <b:navLink></b:navLink>
                         <b:dropMenu value="Notícia" iconAwesome="plus" iconAlign="right">
                             <b:navCommandLink value="novo" action="#{noticiaController.novo()}"/>

@@ -27,53 +27,54 @@
                         </b:column>
                     </b:row>
                 </b:container>
-
-                <b:container style="padding-top: 8%;padding-bottom: 8%;">
-                    <b:row>
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-pie-chart"></i>Projeto</h2>
-                            </center>
-                        </b:column>
-
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-database"></i>Produtos</h2>
-                            </center>
-                        </b:column>
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-code"></i>Serviços</h2>
-                            </center>
-                        </b:column>
-                    </b:row>
-                </b:container>
             </b:jumbotron>
         </b:form>
+
 
         <b:form>
             <b:container>
                 <b:row>
-                    <b:column col-md="4">
-                        <center>
-                            <h2><i class="fa fa-pie-chart"></i> Análise de dados</h2>
-                            <p>O mercado é cada vez mais complexo e competitivo. Com isso é preciso interpretar sinais, reagir rapidamente às constantes transformações e não perder de vista indicativos úteis. 
-                                Sem o suporte de métodos e de tecnologias de análise de dados, essa missão torna-se praticamente impossível. </p>
-                        </center>
+                    <b:column col-md="3">
+                        <b:thumbnail>
+                            <center>
+                                <h2><i class="fa fa-bar-chart-o"></i> Projetos</h2>
+                                <b:commandLink action="#{projetoController.visualisarProjetos()}">
+                                    <p>Projetos em andamento desenvolvido pela equipe da gdados</p>
+                                </b:commandLink>
+                            </center>
+                        </b:thumbnail>
                     </b:column>
 
-                    <b:column col-md="4">
-                        <center>
-                            <h2><i class="fa fa-database"></i> Integração de banco de dados</h2>
-                            <p>Integração de dados é a combinação de processos técnicos e de negócios utilizados para combinar dados de fontes distintas em informações relevantes e de valor. 
-                                Uma solução completa de integração de dados entrega dados confiáveis de uma variedade de fontes. </p>
-                        </center>
+                    <b:column col-md="3">
+                        <b:thumbnail>
+                            <center>
+                                <h2><i class="fa fa-laptop"></i> Tecnologias</h2>
+                                <b:commandLink action="#{noticiaController.visualisarNoticias()}">
+                                    <p>O que está acontecendo nesse momento e tendência e inovação </p>
+                                </b:commandLink>
+                            </center>
+                        </b:thumbnail>
                     </b:column>
-                    <b:column col-md="4">
-                        <center>
-                            <h2><i class="fa fa-code"></i> Desenvolvimento</h2>
-                            <p>Desenvolvimento de sistema web/mobile utilizando como base: dados aberto, dados legado público ou privado, criação de dashboard dinâmica. </p>
-                        </center>
+                    <b:column col-md="3">
+                        <b:thumbnail>
+                            <center>
+                                <h2><i class="fa fa-cogs"></i> Serviços</h2>
+                                <b:commandLink action="/paginas/plb/servico/servico?faces-redirect=true">
+                                    <p>Serviços oferecido pela gdados tecnologia</p>
+                                </b:commandLink>
+                            </center>
+                        </b:thumbnail>
+                    </b:column>
+
+                    <b:column col-md="3">
+                        <b:thumbnail>
+                            <center>
+                                <h2><i class="fa fa-code"></i> Quem somos</h2>
+                                <b:commandLink action="/paginas/plb/sobre/sobre">
+                                    <p>gdados: transformando dados em soluções</p>
+                                </b:commandLink>
+                            </center>
+                        </b:thumbnail>
                     </b:column>
                 </b:row>
                 <br></br>

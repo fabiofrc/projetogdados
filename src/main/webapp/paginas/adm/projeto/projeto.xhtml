@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-noticia.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="conteudo-noticia">
+        <h:form>
+            <b:container>
+                <b:row>
+                    <p:repeat value="#{projetoController.projetos}" var="n" >
+                        <b:column col-md="4">
+                            <p:graphicImage value="#{n.arquivo}" width="100%" height="200">
+                            </p:graphicImage>
+
+                            <h2>#{n.titulo}</h2>
+                            <p>#{n.subTitulo}</p>
+                            <p>
+                                <b:commandButton ajax="false" action="#{projetoController.view(n.id)}" value="Veja mais detalhes »"/>
+                            </p>
+                        </b:column>
+                    </p:repeat>
+                </b:row>
+            </b:container>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-detalhes.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+    <ui:define name="conteudo-topo">
+        <b:jumbotron>
+            <b:container>
+                <center>
+                    <h1><b>#{projetoController.projeto.titulo}.</b></h1>
+                    <h4>#{projetoController.projeto.subTitulo}.</h4>
+                </center>
+            </b:container>
+        </b:jumbotron>
+    </ui:define>
+
+    <ui:define name="conteudo-detalhes">
+        <f:metadata>
+            <f:viewParam name="noticia" value="#{projetoController.projeto}"/>
+            <f:viewAction action="#{projetoController.inicializar()}" />
+        </f:metadata>
+
+        <h:form>
+            <h:panelGrid columns="5" style="border: 0px solid #006699;margin-top: 5%;" cellspacing="10">
+                <h:outputLabel value=" Por gdados, tecnologia — Boa Vista - " />
+                <h:outputText  value="#{projetoController.projeto.dataRegistro}"  >
+                    <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                </h:outputText>
+
+                <h:outputLabel value=" - Atualizado há - " />
+                <h:outputText value="#{projetoController.projeto.dataatuAlizacao}" >
+                    <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                </h:outputText>
+            </h:panelGrid>
+
+            <p> 
+                <h:outputText value="#{projetoController.projeto.descricao}" escape="false"/>
+            </p>
+        </h:form>
+    </ui:define>
+</ui:composition>

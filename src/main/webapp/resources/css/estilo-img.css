@@ -19,9 +19,10 @@
         border-radius: 50%;
     }
     .foto-perfil-comentario{
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        /*border-radius: 50%;*/
+        border: 1px solid gray;
     }
 
     .ui-datascroller .ui-datascroller-content {
@@ -99,11 +100,11 @@
     }
 
     .foto-perfil-comentario{
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        /*border-radius: 50%;*/
         background-color: #d4d0c8;
-        border: 0px solid beige;
+        border: 1px solid gray;
     }
 
     .box-mensagem{

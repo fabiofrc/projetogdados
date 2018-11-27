@@ -17,8 +17,7 @@
             <p:dataScroller value="#{participanteController.buscaComentarioByParticipante(participanteController.participante.id)}" var="c" chunkSize="3">
                 <b:row>
                     <b:column col-md="1" style="margin-top: 0%;">
-                        <p:graphicImage value="#{participanteController.arquivoParticipante}" class="foto-perfil-comentario">
-                            <f:param name="id" value="#{c.participante.id}"/>
+                        <p:graphicImage value="#{c.participante.arquivo}" class="foto-perfil-comentario">
                         </p:graphicImage>
                     </b:column>
 
