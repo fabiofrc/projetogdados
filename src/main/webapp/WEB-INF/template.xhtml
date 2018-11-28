@@ -8,7 +8,7 @@
 
     <h:head>
 
-       <title><ui:insert name="title"></ui:insert></title>
+        <title><ui:insert name="title"></ui:insert></title>
 
         <meta name="author" content="The Author"/>
         <meta charset="UTF-8"/>
@@ -83,6 +83,14 @@
                             <b:navCommandLink value="novo" action="#{arquivoController.novo()}"/>
                             <b:navCommandLink value="lista" action="#{arquivoController.listar()}"/>
                             <b:navCommandLink value="visualizar" action="#{arquivoController.viewTudo()}"/>
+                        </b:dropMenu>
+
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="Comentário" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{comentarioController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{comentarioController.lista()}"/>
+                            <b:navCommandLink value="visualizar" action="#{comentarioController.comentariosDetalhes()}"/>
+                            <b:navCommandLink value="gráfico" action="#{comentarioController.grafico()}"/>
                         </b:dropMenu>
 
                         <b:navLink></b:navLink>
