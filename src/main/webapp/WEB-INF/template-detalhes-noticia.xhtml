@@ -5,19 +5,16 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:b="http://bootsfaces.net/ui">
 
-    <ui:define name="title">gdados - transformando dados em soluções</ui:define>
+    <ui:define name="title">gdados - #{noticiaController.noticia.titulo}</ui:define>
 
     <ui:define name="conteudo">
 
+        <center>
+            <ui:insert name="conteudo-topo"/>  
+        </center>
 
         <b:container>
-            <b:jumbotron>
-                <b:row>
-                    <b:column col-md="12">
-                        <ui:insert name="conteudo-cadastro"/>
-                    </b:column>
-                </b:row>
-            </b:jumbotron>
+            <ui:insert name="conteudo-detalhes"/>
         </b:container>
 
     </ui:define>

@@ -5,13 +5,13 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:b="http://bootsfaces.net/ui">
 
+    <ui:define name="title">gdados - #{projetoController.projeto.titulo}</ui:define>
 
     <ui:define name="conteudo">
 
         <center>
             <ui:insert name="conteudo-topo"/>  
         </center>
-
 
         <b:container>
             <ui:insert name="conteudo-detalhes"/>

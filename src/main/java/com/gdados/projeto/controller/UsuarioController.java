@@ -74,11 +74,11 @@ public class UsuarioController implements Serializable {
     }
 
     public String home() {
-        return "/Home?faces-redirect=true";
+        return "/home?faces-redirect=true";
     }
 
     public String login() {
-        return "/Login?faces-redirect=true";
+        return "/login?faces-redirect=true";
     }
    
 

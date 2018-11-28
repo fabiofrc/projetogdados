@@ -9,25 +9,32 @@
                 xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="conteudo-projeto">
-        <h:form>
-            <b:container>
-                <b:row>
-                    <p:repeat value="#{projetoController.projetos}" var="n" >
-                        <h:link outcome="detalhes">
-                            <b:column col-md="4">
-                                <b:thumbnail style="height: 300px;">
-                                    <p:graphicImage value="#{n.arquivo}" width="100%" height="200">
-                                    </p:graphicImage>
+        <h:form id="form1">
+            <p:dataScroller id="dtprojeto" value="#{projetoController.projetos}" var="n" chunkSize="3">
+                <h:link outcome="detalhes">
+                    <b:row>
+                        <b:column col-md="4" style="margin-top: 0%;">
+                            <p:graphicImage value="#{n.arquivo}" cache="false" class="home-img-noticia" >
+                            </p:graphicImage>
+                        </b:column>
+                        <b:column col-md="8" style="margin-top: -1%;">
+                            <h2 style="color: black;"><b>#{n.titulo}</b></h2>
+                            <p>#{n.subTitulo}</p>
+                            <p style="color: gray;font-size: 10pt;">#{n.subCategoria.nome}</p>
+                            <h:outputText value="#{n.dataatuAlizacao}" style="font-size: 8pt;">
+                                <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                            </h:outputText>
+                        </b:column>
+                    </b:row>
+                    <f:param name="id" value="#{n.id}" />
+                </h:link>
 
-                                    <h2>#{n.titulo}</h2>
-                                    <p>#{n.subTitulo}</p>
-                                </b:thumbnail>
-                            </b:column>
-                            <f:param name="id" value="#{n.id}" />
-                        </h:link>
-                    </p:repeat>
-                </b:row>
-            </b:container>
+                <hr/>
+
+                <f:facet name="loader">
+                    <b:commandButton value="veja mais >>" />
+                </f:facet>
+            </p:dataScroller>
         </h:form>
     </ui:define>
 </ui:composition>

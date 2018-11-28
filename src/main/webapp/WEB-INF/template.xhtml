@@ -7,7 +7,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title>gdados - transformando dados em soluções</title>
+
+       <title><ui:insert name="title"></ui:insert></title>
+
         <meta name="author" content="The Author"/>
         <meta charset="UTF-8"/>
         <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"/>
@@ -31,8 +33,8 @@
         <b:navBar inverse="true" fixed="top" fluid="false" style="background: blue;border: 0px;" >
             <h:form>
                 <b:navbarLinks>
-                    <b:navCommandLink icon-awesome="fa-database" value="GDADOS" outcome="/Home" style="color: white;"/>
-                  
+                    <b:navCommandLink icon-awesome="fa-database" value="GDADOS" outcome="/home" style="color: white;"/>
+
                     <b:dropMenu value="mais" icon-awesome="fa-config" rendered="#{seguranca.gerenciarConteudoPermitido}" style="color: white;">
                         <b:dropMenu value="Usuário" iconAwesome="plus" iconAlign="right">
                             <b:navCommandLink value="novo" action="#{usuarioController.novo()}"/>
@@ -69,7 +71,7 @@
                             <b:navCommandLink value="novo" action="#{projetoController.novo()}"/>
                             <b:navCommandLink value="lista" action="#{projetoController.lista()}"/>
                         </b:dropMenu>
-                        
+
                         <b:navLink></b:navLink>
                         <b:dropMenu value="Notícia" iconAwesome="plus" iconAlign="right">
                             <b:navCommandLink value="novo" action="#{noticiaController.novo()}"/>
