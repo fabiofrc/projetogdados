@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-body {
+/*body {
     padding: 5px;
     background-color: #FFFFFF;
 }
@@ -37,4 +37,28 @@ body,input,select,textarea,button,.ui-widget,.ui-widget input,.ui-widget select,
 .overviewPanel {
     height: 160px;
     padding: 5px;
+}*/
+
+h1 i{
+    color: green;
+}
+i:hover{
+    color: yellow;
+}
+.categoria > h2{
+    font-weight: 900;
+    color: white;
+}
+.subcategoria > h2{
+    font-family: "helvetica";
+    color: gray;
+}
+.home-box-segmento > h2{
+    font-family: "helvetica";
+    color: gray;
+}
+.erro > h2{
+    font-family: "helvetica";
+    color: gray;
+    text-align: center;
 }

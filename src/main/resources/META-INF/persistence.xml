@@ -10,15 +10,17 @@
     <class>com.gdados.projeto.model.Usuario</class>
     <class>com.gdados.projeto.model.Comentario</class>
     <class>com.gdados.projeto.model.Arquivo</class>
+    <class>com.gdados.projeto.model.Projeto</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gdados_db"/>
-      <property name="javax.persistence.jdbc.user" value="gdados_postgres"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gdados"/>
+      <property name="javax.persistence.jdbc.user" value="gdados_user"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="WUvSp3D=xDSV"/>
+      <property name="javax.persistence.jdbc.password" value="frctads1986"/>
       <!-- log de sql do hibernate -->
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>

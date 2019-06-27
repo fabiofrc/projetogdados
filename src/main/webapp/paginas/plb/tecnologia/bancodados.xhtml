@@ -19,7 +19,9 @@
                 <b:container>
                     <b:row>
                         <b:column col-md="6">
-                            <h1>Banco de dados</h1>
+                            <div class="categoria">
+                                <h1>Banco de dados</h1> 
+                            </div>
                             <p>
                                 Transformando dados em soluções!   
                             </p>
@@ -35,37 +37,46 @@
             </b:jumbotron>
         </b:form>
 
-        <h:form>
-            <b:jumbotron style="background: white;">
-                <b:container>
-                    <b:row>
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-laptop"></i> Machine Learning</h2>
-                                <p>Aprendizado de Máquina é um bilhete de primeira classe para as carreiras mais excitantes na análise de dados hoje.
-                                    A medida em fontes de dados proliferam, juntamente com o poder de computação para processá-los,
-                                    a análise de dados se torna cada vez mais simples a aquisição rápida de e previsões. </p>
-                            </center>
-                        </b:column>
+        <b:container style="padding-top: 2%;padding-bottom: 2%;">
+            <b:row>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-laptop"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Integração e migração de banco de dados</h2>
+                            </div>
+                            <p>soluções em integração e migração de base de dados de sistema legados. </p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
 
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-code"></i> NoSQL</h2>
-                                <p>NoSQL é um movimento que promove soluções de armazenamento de dados não relacionais. </p>
-                            </center>
-                        </b:column>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-code"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Modelagem de banco de dados geográficos</h2>
+                            </div>
+                            <p>criação de modelo conceitual e físico para implantação de banco de dados geográfico. </p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
 
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-map-marker"></i> Geoprocessamento</h2>
-                                <p>Geoprocessamento é o tratamento das informações geográficas, ou de dados georreferenciados, por meio de softwares específicos e cálculos. 
-                                    Ou, ainda, o conjunto de técnicas relacionadas ao tratamento da informação espacial. </p>
-                            </center>
-                        </b:column>
-                    </b:row>
-                </b:container>
-            </b:jumbotron>
-        </h:form>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-map-marker"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Implementação de banco de dados geográficos</h2>
+                            </div>
+                            <p>criação e manutenção de base dados geográficos utilizando extensões como postgis e oracle spatial. </p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
+            </b:row>
+            <br></br>
+        </b:container>
     </ui:define>
 
 </ui:composition>

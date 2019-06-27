@@ -19,7 +19,9 @@
                 <b:container>
                     <b:row>
                         <b:column col-md="6">
-                            <h1>Geoprocessamento</h1>
+                            <div class="categoria">
+                                <h1>Geoprocessamento</h1>
+                            </div>
                             <p>
                                 Transformando dados em soluções!   
                             </p>
@@ -35,38 +37,49 @@
             </b:jumbotron>
         </b:form>
 
-        <h:form>
-            <b:jumbotron style="background: white;">
-                <b:container>
-                    <b:row>
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-database"></i> banco de dados geográficos<br/></h2>
-                                <p>Bancos de Dados Geográficos: São banco de dados preparados para armazenar dados sobre informações espaciais. 
-                                    São comumente chamados de Sistemas de Informações Geográficas. Este tipo de banco de dados tem o intuito 
-                                    manipular um imenso volumes de informações de grande complexidade, como mapas e imagens de satélite. </p>
-                            </center>
-                        </b:column>
+        <b:container style="padding-top: 2%;padding-bottom: 2%;">
+            <b:row>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-database"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Consultoria e implantação de projetos geo</h2>
+                            </div>
+                            <p>Consultoria para desenvolvimento ou melhorias para projetos geo: etapas, 
+                                procedimentos, tecnologias e treinamentos. </p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
 
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-cogs"></i> integração</h2>
-                                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, 
-                                    ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            </center>
-                        </b:column>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-cogs"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Modelagem para banco de dados geo</h2>
+                            </div>
+                            <p>Criação de modelos relacionais entre camadas e atributos, associação entre camadas distintas, 
+                                poligno, ponto, linhas etc..</p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
 
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-bar-chart-o"></i> análise espacial</h2>
-                                <p>Apresenta-se um conjunto de técnicas estatísticas que faz uso explícito da localização dos fenômenos. </p>
-                            </center>
-                        </b:column>
-                    </b:row>
-                </b:container>
-                <br></br>
-            </b:jumbotron>
-        </h:form>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-bar-chart-o"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Implementação de banco de dados geo</h2>
+                            </div>
+                            <p>Criação de base dados geográficas, views, funções, triggers etc...</p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
+            </b:row>
+            <br></br>
+        </b:container>
+
     </ui:define>
 
 </ui:composition>

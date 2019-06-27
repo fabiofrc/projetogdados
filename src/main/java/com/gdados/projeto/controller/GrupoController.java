@@ -12,7 +12,6 @@ import com.gdados.projeto.model.Usuario;
 import com.gdados.projeto.util.msg.Msg;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;

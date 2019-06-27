@@ -17,6 +17,7 @@
         <link rel="icon" type="image/png" href="#{request.contextPath}/resources/img/database-512.png" />
 
         <link type="text/css" href="#{request.contextPath}/resources/css/estilo-img.css" rel="stylesheet" />
+        <link type="text/css" href="#{request.contextPath}/resources/css/examples.css" rel="stylesheet" />
 
         <h:outputStylesheet name="css/nanoscroller.css" library="serenity-layout" />
         <h:outputStylesheet name="css/ripple.css" library="serenity-layout" />
@@ -34,7 +35,7 @@
             <h:form>
                 <b:navbarLinks>
                     <b:navCommandLink icon-awesome="fa-database" value="GDADOS" outcome="/Home" style="color: white;"/>
-
+                    <b:navCommandLink icon-awesome="fa-info" value="SOBRE" outcome="/paginas/plb/sobre/sobre" style="color: white;"/>
                     <b:dropMenu value="mais" icon-awesome="fa-config" rendered="#{seguranca.gerenciarConteudoPermitido}" style="color: white;">
                         <b:dropMenu value="Usuário" iconAwesome="plus" iconAlign="right">
                             <b:navCommandLink value="novo" action="#{usuarioController.novo()}"/>

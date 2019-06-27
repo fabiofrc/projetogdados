@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/JSFeCDI">
+<Context path="/gdados">
   <Manager pathname=""/>
   <!-- disables storage of sessions across restarts -->
   <Resource auth="Container" factory="org.jboss.weld.resources.ManagerObjectFactory" name="BeanManager" type="javax.enterprise.inject.spi.BeanManager"/>

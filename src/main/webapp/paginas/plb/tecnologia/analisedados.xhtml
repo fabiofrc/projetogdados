@@ -19,7 +19,9 @@
                 <b:container>
                     <b:row>
                         <b:column col-md="6">
-                            <h1>Análise de dados</h1>
+                            <div class="categoria">
+                                <h1>Análise de dados</h1>
+                            </div>
                             <p>
                                 Transformando dados em soluções!   
                             </p>
@@ -35,39 +37,47 @@
             </b:jumbotron>
         </b:form>
 
-        <h:form>
-            <b:jumbotron style="background: white;">
-                <b:container>
-                    <b:row>
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-database"></i> Mineração de dados</h2>
-                                <p>Prospecção de dados ou mineração de dados (também conhecida pelo termo inglês data mining)
-                                    é o processo de explorar grandes quantidades de dados à procura de padrões consistentes, 
-                                    como regras de associação ou sequências temporais, para detectar relacionamentos sistemáticos entre variáveis, detectando assim novos ...</p>
-                            </center>
-                        </b:column>
+        <b:container style="padding-top: 2%;padding-bottom: 2%;">
+            <b:row>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-database"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Data Warehouse</h2>
+                            </div>
+                            <p>centralização de dados legado e criação de metas e indicadores para proporcionar melhorias.</p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
 
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-dashboard"></i> Dashboard </h2>
-                                <p>Integração de dados é a combinação de processos técnicos e de negócios utilizados para combinar dados de fontes distintas em informações relevantes e de valor. 
-                                    Uma solução completa de integração de dados entrega dados confiáveis de uma variedade de fontes. </p>
-                            </center>
-                        </b:column>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-dashboard"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Business Intelligence</h2>
+                            </div>
+                            <p>transformando dados e solução inteligente para auxiliar a tomada de decisão, proporcionando melhorias e crescimento de negócio. </p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
 
-                        <b:column col-md="4">
-                            <center>
-                                <h2><i class="fa fa-bar-chart-o"></i> Insight</h2>
-                                <p>Insights é uma ferramenta exclusiva da Lomadee que permite que você entenda seu tráfego, suas conversões e o 
-                                    comportamento do seu público em tempo real ao selecionar o filtro de análise para hoje, para as últimas 24hs ou para os últimos 7 dias. </p>
-                            </center>
-                        </b:column>
-                    </b:row>
-                </b:container>
-                <br></br>
-            </b:jumbotron>
-        </h:form>
+                <b:column col-md="4">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
+                        <center>
+                            <h1><i class="fa fa-bar-chart-o"></i></h1>
+                            <div class="subcategoria">
+                                <h2>Business Analytics</h2>
+                            </div>
+                            <p>análise em acompanhe em tempo real o que acontece em sua empresa através dos dados. </p>
+                        </center>
+                    </b:thumbnail>
+                </b:column>
+            </b:row>
+            <br></br>
+        </b:container>
+
     </ui:define>
 
 </ui:composition>

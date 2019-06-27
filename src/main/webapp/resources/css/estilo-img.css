@@ -3,6 +3,11 @@
         width: 100%;
         height: 200px;
     }
+    
+    .home-img1 {
+        width: 100%;
+        height: 50px;
+    }
 
     .home-img-noticia {
         width: 100%;
@@ -84,6 +89,12 @@
         width: 100%;
         height: 340px;
     }
+    
+    .home-img1 {
+        width: 100%;
+        height: 200px;
+    }
+    
     .home-img-noticia {
         width: 100%;
         height: 200px;
