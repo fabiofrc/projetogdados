@@ -17,8 +17,9 @@
                 <b:container style="height: 250px;border: 0px solid;">
                     <b:row>
                         <b:column col-md="7" style="padding-top: 4%;padding-bottom: 4%;border: 0px solid;">
-                            <h1 style="color: white;">Transformando dados em soluções!</h1>
-                            <p id="sloga" style="color: white;"></p>
+                            <div class="sloga">
+                                <h1>Transformando dados em soluções!</h1> 
+                            </div>
                             <p>
                                 <p><b:commandButton ajax="false" action="#{noticiaController.visualisarNoticias()}" value="Tendências e tecnologias »" look="danger"/></p>
                             </p>
@@ -95,7 +96,8 @@
                             <p style="color: white;">Bancos de dados ou bases de dados são um conjunto de arquivos relacionados entre si com registros
                                 sobre pessoas, lugares ou coisas. São coleções organizadas de dados que se relacionam de forma a criar algum sentido
                                 e dar mais eficiência durante uma pesquisa ou estudo. </p>
-                            <p><b:commandButton action="/paginas/plb/tecnologia/bancodados?faces-redirect=true" value="saiba mais »" /></p>
+                            <p><b:commandButton action="/paginas/plb/tecnologia/bancodados?faces-redirect=true" 
+                                                value="saiba mais »" look="primary"/></p>
                         </b:column>
                     </b:row>
                 </b:container>
@@ -105,30 +107,36 @@
         <b:container style="padding-top: 2%;padding-bottom: 2%;">
             <b:row>
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-laptop"></i></h1>
-                            <h2>Integração e migração de banco de dados</h2>
+                            <div class="subcategoria">
+                                <h2>Integração e migração de banco de dados</h2>
+                            </div>
                             <p>soluções em integração e migração de base de dados de sistema legados. </p>
                         </center>
                     </b:thumbnail>
                 </b:column>
 
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-code"></i></h1>
-                            <h2>Modelagem de banco de dados geográficos</h2>
+                            <div class="subcategoria">
+                                <h2>Modelagem de banco de dados geográficos</h2>
+                            </div>
                             <p>criação de modelo conceitual e físico para implantação de banco de dados geográfico. </p>
                         </center>
                     </b:thumbnail>
                 </b:column>
 
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-map-marker"></i></h1>
-                            <h2>Implementação de banco de dados geográficos</h2>
+                            <div class="subcategoria">
+                                <h2>Implementação de banco de dados geográficos</h2>
+                            </div>
                             <p>criação e manutenção de base dados geográficos utilizando extensões como postgis e oracle spatial. </p>
                         </center>
                     </b:thumbnail>
@@ -146,7 +154,8 @@
                                 <h2>Análise de dados</h2>
                             </div>
                             <p style="color: white;">Análise de dados é transformar números em informação, em significado, em solução de problemas. </p>
-                            <p><b:commandButton action="/paginas/plb/tecnologia/analisedados?faces-redirect=true" value="saiba mais »" /></p>
+                            <p><b:commandButton action="/paginas/plb/tecnologia/analisedados?faces-redirect=true" 
+                                                value="saiba mais »" look="danger"/></p>
                         </b:column>
 
                         <b:column col-md="6">
@@ -160,30 +169,36 @@
         <b:container style="padding-top: 2%;padding-bottom: 2%;">
             <b:row>
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-database"></i></h1>
-                            <h2>Data Warehouse</h2>
+                            <div class="subcategoria">
+                                <h2>Data Warehouse</h2>
+                            </div>
                             <p>centralização de dados legado e criação de metas e indicadores para proporcionar melhorias.</p>
                         </center>
                     </b:thumbnail>
                 </b:column>
 
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-dashboard"></i></h1>
-                            <h2>Business Intelligence</h2>
+                            <div class="subcategoria">
+                                <h2>Business Intelligence</h2>
+                            </div>
                             <p>transformando dados e solução inteligente para auxiliar a tomada de decisão, proporcionando melhorias e crescimento de negócio. </p>
                         </center>
                     </b:thumbnail>
                 </b:column>
 
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-bar-chart-o"></i></h1>
-                            <h2>Business Analytics</h2>
+                            <div class="subcategoria">
+                                <h2>Business Analytics</h2>
+                            </div>
                             <p>análise em acompanhe em tempo real o que acontece em sua empresa através dos dados. </p>
                         </center>
                     </b:thumbnail>
@@ -207,7 +222,8 @@
 
                             <p style="color: white;">Geoprocessamento é o tratamento das informações geográficas, ou de dados georreferenciados, por meio de softwares específicos e cálculos. 
                                 Ou, ainda, o conjunto de técnicas relacionadas ao tratamento da informação espacial. </p>
-                            <p><b:commandButton action="/paginas/plb/tecnologia/geoprocessamento?faces-redirect=true" value="saiba mais »" /></p>
+                            <p><b:commandButton action="/paginas/plb/tecnologia/geoprocessamento?faces-redirect=true" 
+                                                value="saiba mais »" look="primary"/></p>
                         </b:column>
                     </b:row>
                 </b:container>
@@ -218,10 +234,12 @@
         <b:container style="padding-top: 2%;padding-bottom: 2%;">
             <b:row>
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-database"></i></h1>
-                            <h2>Consultoria e implantação de projetos geo</h2>
+                            <div class="subcategoria">
+                                <h2>Consultoria e implantação de projetos geo</h2>
+                            </div>
                             <p>Consultoria para desenvolvimento ou melhorias para projetos geo: etapas, 
                                 procedimentos, tecnologias e treinamentos. </p>
                         </center>
@@ -229,10 +247,12 @@
                 </b:column>
 
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-cogs"></i></h1>
-                            <h2>Modelagem para banco de dados geo</h2>
+                            <div class="subcategoria">
+                                <h2>Modelagem para banco de dados geo</h2>
+                            </div>
                             <p>Criação de modelos relacionais entre camadas e atributos, associação entre camadas distintas, 
                                 poligno, ponto, linhas etc..</p>
                         </center>
@@ -240,10 +260,12 @@
                 </b:column>
 
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-bar-chart-o"></i></h1>
-                            <h2>Implementação de banco de dados geo</h2>
+                            <div class="subcategoria">
+                                <h2>Implementação de banco de dados geo</h2>
+                            </div>
                             <p>Criação de base dados geográficas, views, funções, triggers etc...</p>
                         </center>
                     </b:thumbnail>
@@ -261,9 +283,9 @@
                             <div class="categoria">
                                 <h2>Desenvolvimento</h2>
                             </div>
-                            <p style="color: white;">Geoprocessamento é o tratamento das informações geográficas, ou de dados georreferenciados, por meio de softwares específicos e cálculos. 
-                                Ou, ainda, o conjunto de técnicas relacionadas ao tratamento da informação espacial. </p>
-                            <p><b:commandButton action="/paginas/plb/tecnologia/geoprocessamento?faces-redirect=true" value="saiba mais »" /></p>
+                            <p style="color: white;">Desenvolvimento de soluções comerciais e governamental, aplicação web e mobile. </p>
+                            <p><b:commandButton action="/paginas/plb/tecnologia/desenvolvimento?faces-redirect=true" 
+                                                value="saiba mais »" look="danger"/></p>
                         </b:column>
 
                         <b:column col-md="6">
@@ -278,30 +300,36 @@
         <b:container style="padding-top: 2%;padding-bottom: 2%;">
             <b:row>
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-database"></i></h1>
-                            <h2>Sistemas corporativo</h2>
+                            <div class="subcategoria">
+                                <h2>Sistemas corporativo</h2>
+                            </div>
                             <p>desenvolvimento de sistema corporativo voltado para o mercado privado e governamental, gerenciamento de estoque e produtos, portal para transparência de dados. </p>
                         </center>
                     </b:thumbnail>
                 </b:column>
 
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-cogs"></i></h1>
-                            <h2>E-commerce</h2>
+                            <div class="subcategoria">
+                                <h2>E-commerce</h2>
+                            </div>
                             <p>desenvolvimento de sistema de vendas online e personalização com com recomendação de produtos.</p>
                         </center>
                     </b:thumbnail>
                 </b:column>
 
                 <b:column col-md="4">
-                    <b:thumbnail style="padding: 6%;height: 300px;">
+                    <b:thumbnail style="padding: 6%;height: 400px;">
                         <center>
                             <h1><i class="fa fa-bar-chart-o"></i></h1>
-                            <h2>Aplicação web e mobile</h2>
+                            <div class="subcategoria">
+                                <h2>Aplicação web e mobile</h2>
+                            </div>
                             <p>desenvolvimento de app, sites pessoal e empresarial para os segmentos de lojas e restaurantes.</p>
                         </center>
                     </b:thumbnail>
@@ -317,7 +345,8 @@
                         <b:column col-md="6">
                             <h2 style="color: white;">Contato</h2>
                             <p style="color: white;">Junte-se a nós, e fique por dentro de novidades e tendências sobre tecnologias de banco de dados e ciência de dados.  </p>
-                            <p><b:commandButton ajax="false" action="#{participanteController.novo()}" value="cadastre-se »" /></p>
+                            <p><b:commandButton ajax="false" action="#{participanteController.novo()}" 
+                                                value="cadastre-se »" look="primary"/></p>
                         </b:column>
 
                         <b:column col-md="6">
