@@ -74,7 +74,7 @@ public class UsuarioController implements Serializable {
     }
 
     public String home() {
-        return "/home?faces-redirect=true";
+        return "/Home?faces-redirect=true";
     }
 
     public String login() {

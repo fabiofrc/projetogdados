@@ -26,32 +26,32 @@
             <f:viewAction action="#{projetoController.inicializar()}" />
         </f:metadata>
 
-        <b:jumbotron style="background: white;">
-            <h:form>
-                <b:row>
-                    <b:column col-md="8">
-                        <h:outputLabel value=" Por gdados, tecnologia — Boa Vista - " />
-                        <h:outputText value="#{projetoController.projeto.dataRegistro}"  >
-                            <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
-                        </h:outputText>
 
-                        <h:outputLabel value=" - Atualizado há - " />
-                        <h:outputText value="#{projetoController.projeto.dataatuAlizacao}" >
-                            <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
-                        </h:outputText>
-                    </b:column>
-                    <b:column col-md="4">
-                        <b:socialShare shares="twitter,linkedin,facebook" showLabel="true" show-count="true" text="gdados!"/>
-                    </b:column>
-                </b:row>
+        <h:form>
+            <b:row>
+                <b:column col-md="8">
+                    <h:outputLabel value=" Por gdados, tecnologia — Boa Vista - " />
+                    <h:outputText value="#{projetoController.projeto.dataRegistro}"  >
+                        <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                    </h:outputText>
 
-                <hr/>
-                <br></br>
+                    <h:outputLabel value=" - Atualizado há - " />
+                    <h:outputText value="#{projetoController.projeto.dataatuAlizacao}" >
+                        <f:convertDateTime type="date" dateStyle="short" locale="pt" timeZone="America/Manaus" pattern="dd/MM/yyyy MM:ss"/>
+                    </h:outputText>
+                </b:column>
+                <b:column col-md="4">
+                    <b:socialShare shares="twitter,linkedin,facebook" showLabel="true" show-count="true" text="gdados!"/>
+                </b:column>
+            </b:row>
 
-                <p> 
-                    <p:outputLabel value="#{projetoController.projeto.descricao}" escape="false" />
-                </p>
-            </h:form>
-        </b:jumbotron>
+            <hr/>
+            <br></br>
+
+            <p> 
+                <p:outputLabel value="#{projetoController.projeto.descricao}" escape="false" />
+            </p>
+        </h:form>
+
     </ui:define>
 </ui:composition>

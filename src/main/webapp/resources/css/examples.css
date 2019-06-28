@@ -62,7 +62,9 @@ i:hover{
     color: gray;
     text-align: center;
 }
-.sloga > h1{
+.sloga > h2{
     font-family: "helvetica";
     color: white;
+    font-weight: 900;
+    font-size: 50px;
 }

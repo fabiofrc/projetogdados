@@ -19,7 +19,7 @@
 
 
     <build>
-        <finalName>JSFeCDI</finalName>
+        <finalName>gdados</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

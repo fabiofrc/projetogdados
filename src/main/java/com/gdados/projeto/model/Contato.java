@@ -6,24 +6,23 @@
 package com.gdados.projeto.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author frc
  */
 @Entity
-@Table(name = "subcategoria")
-public class SubCategoria implements Serializable {
+@Table(name = "contato")
+public class Contato implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,18 +32,27 @@ public class SubCategoria implements Serializable {
     @Column(name = "nome", unique = true)
     private String nome;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "telefone")
+    private String telefone;
+
+    @Column(name = "empresa")
+    private String empresa;
+
+    @Column(name = "segmento")
+    private String segmento;
+
     @Column(name = "descricao", columnDefinition = "text")
     private String descricao;
 
+    @Column(name = "dataregistro")
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dataRegistro;
+
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-
-    @OneToMany(mappedBy = "subCategoria")
-    private List<Noticia> noticias;
-
-    @OneToMany(mappedBy = "subCategoria")
-    private List<Projeto> projetos;
+    private SubCategoria subCategoria;
 
     public Long getId() {
         return id;
@@ -62,20 +70,12 @@ public class SubCategoria implements Serializable {
         this.nome = nome;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Date getDataRegistro() {
+        return dataRegistro;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public List<Noticia> getNoticias() {
-        return noticias;
-    }
-
-    public void setNoticias(List<Noticia> noticias) {
-        this.noticias = noticias;
+    public void setDataRegistro(Date dataRegistro) {
+        this.dataRegistro = dataRegistro;
     }
 
     public String getDescricao() {
@@ -86,14 +86,15 @@ public class SubCategoria implements Serializable {
         this.descricao = descricao;
     }
 
-    public List<Projeto> getProjetos() {
-        return projetos;
+    public SubCategoria getSubCategoria() {
+        return subCategoria;
     }
 
-    public void setProjetos(List<Projeto> projetos) {
-        this.projetos = projetos;
+    public void setSubCategoria(SubCategoria subCategoria) {
+        this.subCategoria = subCategoria;
     }
-
+    
+    
 
     @Override
     public int hashCode() {
@@ -114,7 +115,7 @@ public class SubCategoria implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        SubCategoria other = (SubCategoria) obj;
+        Contato other = (Contato) obj;
         if (id == null) {
             if (other.id != null) {
                 return false;
@@ -124,4 +125,37 @@ public class SubCategoria implements Serializable {
         }
         return true;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public String getSegmento() {
+        return segmento;
+    }
+
+    public void setSegmento(String segmento) {
+        this.segmento = segmento;
+    }
+
 }

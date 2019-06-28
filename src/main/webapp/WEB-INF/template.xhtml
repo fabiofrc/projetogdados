@@ -19,9 +19,7 @@
         <link type="text/css" href="#{request.contextPath}/resources/css/estilo-img.css" rel="stylesheet" />
         <link type="text/css" href="#{request.contextPath}/resources/css/examples.css" rel="stylesheet" />
 
-        <h:outputStylesheet name="css/nanoscroller.css" library="serenity-layout" />
-        <h:outputStylesheet name="css/ripple.css" library="serenity-layout" />
-        <h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css" library="serenity-layout" />
+       
 
         <h:outputScript name="js/nanoscroller.js" library="serenity-layout" />
         <h:outputScript name="js/layout.js" library="serenity-layout" />
@@ -93,6 +91,12 @@
                             <b:navCommandLink value="visualizar" action="#{comentarioController.comentariosDetalhes()}"/>
                             <b:navCommandLink value="gráfico" action="#{comentarioController.grafico()}"/>
                         </b:dropMenu>
+                        
+                        <b:navLink></b:navLink>
+                        <b:dropMenu value="Contatos" iconAwesome="plus" iconAlign="right">
+                            <b:navCommandLink value="novo" action="#{contatoController.novo()}"/>
+                            <b:navCommandLink value="lista" action="#{contatoController.lista()}"/>
+                        </b:dropMenu>
 
                         <b:navLink></b:navLink>
                         <b:dropMenu value="DASHBOARD" iconAwesome="plus" iconAlign="right">
@@ -113,9 +117,8 @@
 
             <h:form styleClass="navbar-form navbar-right" rendered="#{seguranca.usuarioLogado == null}">
                 <div class="form-group">
-                    <b:commandLink outcome="/paginas/plb/participante/cadastro" immediate="true" 
-                                   value="Cadastre-se" look="success" icon-awesome="fa-envelope-o" iconAlign="right" >
-                        <f:ajax listener="#{participanteController.limpaCampoParticipante()}"/>
+                    <b:commandLink action="#{contatoController.novo()}" immediate="true" 
+                                   value="Solicite uma proposta" look="success" icon-awesome="fa-envelope-o" iconAlign="right" >
                     </b:commandLink>
                 </div> 
                 <div class="form-group">

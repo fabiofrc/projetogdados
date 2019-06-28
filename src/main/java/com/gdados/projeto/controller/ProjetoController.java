@@ -97,7 +97,7 @@ public class ProjetoController implements Serializable {
         InputStream in = new BufferedInputStream(arq.getInputstream());
         String foto = arq.getFileName();
 
-        String pathFile = "/resources/upload/projeto/" + System.currentTimeMillis() + foto;
+        String pathFile = "/resources/" + System.currentTimeMillis() + foto;
         String caminho = scontext.getRealPath(pathFile);
 
         projeto.setArquivo(pathFile);
