@@ -16,7 +16,7 @@ public class TesteCep {
     public static void buscaCep() {
         //Faz a busca para o cep 58043-280
         WebServiceCep webServiceCep = WebServiceCep.searchCep("69309393");
-        //A ferramenta de busca ignora qualquer caracter que n?o seja n?mero.
+        //A ferramenta de busca ignora qualquer caracter que não seja número.
 
         //caso a busca ocorra bem, imprime os resultados.
         if (webServiceCep.wasSuccessful()) {
