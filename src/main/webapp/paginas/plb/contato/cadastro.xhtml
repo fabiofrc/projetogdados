@@ -20,7 +20,9 @@
 
             <b:panelGrid col-spans="6,6">
                 <b:inputText label="Email" value="#{contatoController.contato.email}"
-                             placeholder="email" required="true" requiredMessage="informe o email"/>
+                             placeholder="email" required="true" requiredMessage="informe o email">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                </b:inputText>
 
                 <b:inputText label="Telefone" value="#{contatoController.contato.telefone}"
                              placeholder="telefone" required="true" requiredMessage="informe o telefone"/>

@@ -5,10 +5,10 @@
  */
 package com.gdados.projeto.controller;
 
-import com.gdados.projeto.facade.CategoriaFacade;
 import com.gdados.projeto.facade.ContatoFacade;
-import com.gdados.projeto.model.Categoria;
 import com.gdados.projeto.model.Contato;
+import com.gdados.projeto.util.email.Mailer;
+import com.gdados.projeto.util.msg.Msg;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
@@ -24,9 +24,17 @@ public class ContatoController implements Serializable {
     private ContatoFacade contatoFacade;
     private List<Contato> contatos;
 
+    @Inject
+    private Mailer mailer;
+
+    private GerenciadorEmail gerenciadorEmail;
+
     public ContatoController() {
         if (contato == null) {
             limpaCampo();
+        }
+        if (gerenciadorEmail == null) {
+            gerenciadorEmail = new GerenciadorEmail();
         }
     }
 
@@ -34,6 +42,7 @@ public class ContatoController implements Serializable {
         try {
             if (contato.getId() == null) {
                 contatoFacade.save(contato);
+                gerenciadorEmail.enviarEmail(contato);
                 limpaCampo();
                 return "cadastro_sucesso?faces-redirect=true";
             } else {
@@ -76,6 +85,16 @@ public class ContatoController implements Serializable {
         }
     }
 
+    public void enviarEmail() {
+        gerenciadorEmail.enviarEmail(contato);
+//        MailMessage message = mailer.novaMensagem();
+//        message.to(this.contato.getEmail())
+//                .subject("Contato" + this.contato.getDescricao())
+//                .bodyHtml("<strong>Interesse da proposta: </strong>" + this.contato.getDescricao())
+//                .send();
+        Msg.addMsgInfo("Email enviado com sucesso");
+    }
+
     public String lista() {
         return "/paginas/adm/contato/lista?faces-redirect=true";
     }
@@ -113,4 +132,13 @@ public class ContatoController implements Serializable {
         contatos = contatoFacade.getAll();
         return contatos;
     }
+
+    public GerenciadorEmail getGerenciadorEmail() {
+        return gerenciadorEmail;
+    }
+
+    public void setGerenciadorEmail(GerenciadorEmail gerenciadorEmail) {
+        this.gerenciadorEmail = gerenciadorEmail;
+    }
+
 }

@@ -65,6 +65,14 @@ i:hover{
 .sloga > h2{
     font-family: "helvetica";
     color: white;
-    font-weight: 900;
+    font-weight: 200;
     font-size: 50px;
+    text-align: center;
+}
+.sloga > p{
+    font-family: "helvetica";
+    color: white;
+    font-weight: 200;
+    font-size: 20px;
+    text-align: center;
 }

@@ -28,10 +28,13 @@ public class MailConfigProducer {
         SimpleMailConfig config = new SimpleMailConfig();
         config.setServerHost(props.getProperty("mail.server.host"));
         config.setServerPort(Integer.parseInt(props.getProperty("mail.server.port")));
+//        config.put("mail.smtp.starttls.enable", "true");
         config.setEnableSsl(Boolean.parseBoolean(props.getProperty("mail.enable.ssl")));
+// config.setEnableSsl(Boolean.parseBoolean(props.getProperty("mail.smtp.starttls.enable")));
         config.setAuth(Boolean.parseBoolean(props.getProperty("mail.auth")));
         config.setUsername(props.getProperty("mail.username"));
         config.setPassword(props.getProperty("mail.password"));
+        
 
         return config;
     }
