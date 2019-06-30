@@ -32,8 +32,17 @@
                         <b:iconAwesome name="fa-envelope-o" />
                     </f:facet>
                 </b:inputText>
+            </b:panelGrid>
 
+            <b:panelGrid col-spans="6,6" >
                 <b:inputSecret label="Senha" value="#{participanteController.participante.usuario.senha}"
+                               placeholder="********" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputSecret>
+
+                <b:inputSecret label="Confirmar senha" value="#{participanteController.participante.usuario.senha}"
                                placeholder="********" required="true" maxlength="12" >
                     <f:facet name="prepend">
                         <b:iconAwesome name="key" />
@@ -41,28 +50,55 @@
                 </b:inputSecret>
             </b:panelGrid>
 
-            <b:panelGrid col-spans="12" >
-                <p:outputLabel value="Adicionar uma foto - tamanho máximo (500 kbytes)"/>
-                <p:fileUpload required="false" skinSimple="false" previewWidth="100" style="font-size: 8pt;"
-                              fileUploadListener="#{participanteController.fileUpload}" mode="advanced"
-                              label="Anexar uma foto para o perfil" uploadLabel="Inserir" auto="false" 
-                              sizeLimit="500000"  widgetVar="uploader" update="pgFoto"
-                              cancelLabel="excluir"  invalidFileMessage="Arquivo inválido"
-                              invalidSizeMessage="Tamanho do arquivo não permitido!" multiple="false"
-                              allowTypes="/(\.|\/)(gif|jpe?g|png|)$/" /> 
+
+            <b:panelGrid col-spans="6,6" >
+                <b:inputText label="Cep" value="#{participanteController.participante.usuario.senha}"
+                             placeholder="Cep" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+
+                <b:inputText label="Logradouro" value="#{participanteController.participante.usuario.senha}"
+                             placeholder="logradouro" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
             </b:panelGrid>
 
-            <b:panel style="margin-top: 1%;" id="pgFoto">
-                <f:facet name="heading">
-                    <i class="fa fa-photo" style="padding-right:20px" />
-                    <b:badge style="margin-left:10px; background-color:#5cb85c" value="foto do perfil"  />
-                </f:facet>
-                <center>
-                    <b:panelGrid col-spans="12">
-                        <p:outputLabel value="tamanho em kbytes #{participanteController.tamanhoArquivo}" style="color: red;"/>
-                    </b:panelGrid>
-                </center>
-            </b:panel>
+            <b:panelGrid col-spans="6,6" >
+                <b:inputText label="Número" value="#{participanteController.participante.usuario.senha}"
+                             placeholder="numero" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+
+                <b:inputText label="Complemento" value="#{participanteController.participante.usuario.senha}"
+                             placeholder="complemento" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+            </b:panelGrid>
+            
+            
+            <b:panelGrid col-spans="6,6" >
+                <b:inputText label="Bairro" value="#{participanteController.participante.usuario.senha}"
+                             placeholder="bairro" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+
+                <b:inputText label="UF" value="#{participanteController.participante.usuario.senha}"
+                             placeholder="uf" required="true" maxlength="12" >
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+            </b:panelGrid>
 
             <br></br>
 
