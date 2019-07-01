@@ -18,87 +18,26 @@
 
         <h:form id="form">
             <b:messages id="msgs"/>
-            <b:panelGrid col-spans="12" id="pgParticipante">
-                <b:inputText label="Nome" value="#{participanteController.participante.nome}" placeholder="nome completo" required="true">
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="user" />
-                    </f:facet>
-                </b:inputText>
+            <p:panelGrid columns="1" id="pgParticipante" layout="grid">
+                <p:inputText label="Nome" value="#{participanteController.participante.nome}" 
+                             placeholder="nome completo" required="true">
+                </p:inputText>
 
-                <b:inputText id="email" label="Email" value="#{participanteController.participante.usuario.email}"
+                <p:inputText id="email" label="Email" value="#{participanteController.participante.usuario.email}"
                              placeholder="exemplo@email.com" required="true">
                     <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="fa-envelope-o" />
-                    </f:facet>
-                </b:inputText>
-            </b:panelGrid>
+                </p:inputText>
+            </p:panelGrid>
 
-            <b:panelGrid col-spans="6,6" >
-                <b:inputSecret label="Senha" value="#{participanteController.participante.usuario.senha}"
+            <p:panelGrid columns="2" layout="grid">
+                <p:password label="Senha" value="#{participanteController.participante.usuario.senha}"
+                            feedback="true"  placeholder="********" required="true" maxlength="12" >
+                </p:password>
+
+                <p:password label="Confirmar senha" value="#{participanteController.participante.usuario.senha}"
                                placeholder="********" required="true" maxlength="12" >
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputSecret>
-
-                <b:inputSecret label="Confirmar senha" value="#{participanteController.participante.usuario.senha}"
-                               placeholder="********" required="true" maxlength="12" >
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputSecret>
-            </b:panelGrid>
-
-
-            <b:panelGrid col-spans="6,6" >
-                <b:inputText label="Cep" value="#{participanteController.participante.usuario.senha}"
-                             placeholder="Cep" required="true" maxlength="12" >
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-
-                <b:inputText label="Logradouro" value="#{participanteController.participante.usuario.senha}"
-                             placeholder="logradouro" required="true" maxlength="12" >
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-            </b:panelGrid>
-
-            <b:panelGrid col-spans="6,6" >
-                <b:inputText label="Número" value="#{participanteController.participante.usuario.senha}"
-                             placeholder="numero" required="true" maxlength="12" >
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-
-                <b:inputText label="Complemento" value="#{participanteController.participante.usuario.senha}"
-                             placeholder="complemento" required="true" maxlength="12" >
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-            </b:panelGrid>
-            
-            
-            <b:panelGrid col-spans="6,6" >
-                <b:inputText label="Bairro" value="#{participanteController.participante.usuario.senha}"
-                             placeholder="bairro" required="true" maxlength="12" >
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-
-                <b:inputText label="UF" value="#{participanteController.participante.usuario.senha}"
-                             placeholder="uf" required="true" maxlength="12" >
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-            </b:panelGrid>
+                </p:password>
+            </p:panelGrid>
 
             <br></br>
 
@@ -109,11 +48,51 @@
 
             <br></br>
 
-            <b:panelGrid col-spans="12">
+            <p:panelGrid columns="2" layout="grid">
+                <p:inputText label="Cep" value="#{participanteController.endereco.cep}"
+                             placeholder="Cep" required="true" maxlength="12" >
+
+                    <f:ajax event="blur" render="form" listener="#{participanteController.buscarEnderecoByCep()}"/>
+
+                </p:inputText>
+
+                <p:inputText label="Logradouro" value="#{participanteController.endereco.logradouro}"
+                             placeholder="logradouro" required="true" maxlength="12" >
+                </p:inputText>
+            </p:panelGrid>
+
+            <p:panelGrid columns="2" layout="grid">
+                <p:inputText label="Número" value="#{participanteController.endereco.numero}"
+                             placeholder="numero" required="true" maxlength="12" >
+                </p:inputText>
+
+                <p:inputText label="Complemento" value="#{participanteController.endereco.complemento}"
+                             placeholder="complemento" required="true" maxlength="12" >
+                </p:inputText>
+            </p:panelGrid>
+
+
+            <p:panelGrid columns="3" layout="grid">
+                <p:inputText label="Cidade" value="#{participanteController.endereco.cidade}"
+                             placeholder="cidade" required="true" maxlength="12" >
+                </p:inputText>
+
+                <p:inputText label="Bairro" value="#{participanteController.endereco.bairro}"
+                             placeholder="bairro" required="true" maxlength="12" >
+                </p:inputText>
+
+                <p:inputText label="UF" value="#{participanteController.endereco.uf}"
+                             placeholder="uf" required="true" maxlength="12" >
+                </p:inputText>
+            </p:panelGrid>
+
+            <br></br>
+
+            <p:panelGrid columns="1" layout="grid">
                 <b:commandButton value="enviar" action="#{participanteController.salvar()}" look="primary" icon-awesome="fa fa-checked" style="width:100%">
                     <f:ajax execute="@form" render="form" />
                 </b:commandButton>
-            </b:panelGrid>
+            </p:panelGrid>
         </h:form>
 
     </ui:define>

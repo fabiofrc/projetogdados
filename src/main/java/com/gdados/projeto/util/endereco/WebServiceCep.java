@@ -1,4 +1,4 @@
-package jacontrol.Classes;
+package com.gdados.projeto.util.endereco;
 
 import java.net.MalformedURLException;
 import java.net.URL;

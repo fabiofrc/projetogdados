@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../../../WEB-INF/template-dashboard.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="conteudo-dashboard">
+        <b:messages />
+        <h3>listagem de endereços</h3>
+        <h:form>
+            <p:dataTable id="tbCategoria" value="#{enderecoController.enderecos}" var="g"
+                         paginator="true" reflow="true">
+                <p:column headerText="id" width="100">
+                    <h:outputText value="#{g.id}"/>
+                </p:column>
+                <p:column headerText="descrição" filterBy="#{g.descricao}">
+                    <h:outputText value="#{g.descricao}"/>
+                </p:column>
+
+                <p:column headerText="opções" >
+                    <p:panelGrid columns="3" layout="grid">
+                        <p:commandButton ajax="false" action="#{enderecoController.view(g.id)}" icon="ui-icon-search"/>
+                        <p:commandButton ajax="false" action="#{enderecoController.editar(g.id)}" icon="ui-icon-pencil"/>
+
+                        <p:commandButton actionListener="#{enderecoController.deletar(g)}" update="tbCategoria" icon="ui-icon-trash">
+                            <p:confirm header="Confirmar" message="Deseja excluir?" icon="ui-icon-trash" />
+                        </p:commandButton>
+                    </p:panelGrid>
+                </p:column>  
+            </p:dataTable>
+
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
